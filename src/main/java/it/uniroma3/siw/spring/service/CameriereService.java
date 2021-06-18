@@ -41,7 +41,6 @@ public class CameriereService {
 		cameriereDaModificare.setAssunzione(cameriere.getAssunzione());
 		cameriereDaModificare.setDurataContratto(cameriere.getDurataContratto());
 		cameriereDaModificare.setNumeroDiTelefono(cameriere.getNumeroDiTelefono());
-		cameriereDaModificare.setSoprannome(cameriere.getSoprannome());
 		
 	}
 	

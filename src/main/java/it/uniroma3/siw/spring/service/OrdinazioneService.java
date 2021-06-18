@@ -43,7 +43,7 @@ public class OrdinazioneService {
 	
 	@Transactional
 	public boolean alreadyExists(Ordinazione ordinazione) {
-		List<Ordinazione> ordinazioni = this.ordinazioneRepository.findByNome(ordinazione.getId());
+		List<Ordinazione> ordinazioni = this.ordinazioneRepository.findById(ordinazione.getId());
 		if (ordinazioni.size() > 0)
 			return true;
 		else 
