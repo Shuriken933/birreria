@@ -24,7 +24,7 @@ public class OrdinazioneController {
 	private OrdinazioneValidator ordinazioneValidator;
 	
 	
-	@GetMapping(value = "/ordinazioni")
+	/*@GetMapping(value = "/ordinazioni")
 	public String getOrdinazioni(Model model) {
 		model.addAttribute("ordinazioni", this.ordinazioneService.tutte());
 		return "ordinazioni.html";
@@ -45,6 +45,6 @@ public class OrdinazioneController {
             return "redirect:/cameriere/gestisciOrdinazioni";
         }
         return "cameriere/gestisciOrdinazioni";
-    }
+    }*/
 
 }

@@ -8,5 +8,5 @@ import it.uniroma3.siw.spring.model.Tavolo;
 
 public interface TavoloRepository extends CrudRepository<Tavolo, Long> {
 
-	public List<Tavolo> findByNumero(Integer numeroTavolo);
+	/*public List<Tavolo> findByNumero(Integer numero);*/
 }

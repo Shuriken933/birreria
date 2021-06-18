@@ -23,7 +23,7 @@ public class BirraController {
 	private BirraValidator birraValidator;
 	
 	
-	@GetMapping(value = "/birre")
+	/*@GetMapping(value = "/birre")
 	public String getBirre(Model model) {
 		model.addAttribute("birre", this.birraService.tutte());
 		return "birre.html";
@@ -56,7 +56,7 @@ public class BirraController {
 	public String rimuoviBirra(@PathVariable("id") Long id, Model model) {
 		this.birraService.rimuoviBirra(id);
 		return "redirect:/admin/gestisciBirre"; 
-	}
+	}*/
 	
 
 }

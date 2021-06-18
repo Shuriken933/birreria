@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/base.html"></head>
+<body>
+	<!-- inizio MENU -->
+	<nav th:replace="fragments/base.html :: menu"></nav>
+	<!-- fine MENU -->
+
+	<div class="container">
+		<h1>Error!</h1>
+		<div class="errorPage">
+			<br />
+			<p>
+				There seems to be a problem with the page you requested ( <span
+					th:text="${path}" /> ).
+			</p>
+			<p th:text="${'Details: ' + message}" />
+			<p th:text="${'Status: ' + status}" />
+		</div>
+	</div>
+
+
+	<!-- inizio FOOTER -->
+	<footer th:replace="fragments/base.html :: footer"></footer>
+	<!-- fine FOOTER -->
+
+	<th:block th:replace="fragments/base.html :: script"></th:block>
+</body>
+
+</html>

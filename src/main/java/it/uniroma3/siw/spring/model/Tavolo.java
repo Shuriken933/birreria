@@ -25,7 +25,7 @@ public @Data class Tavolo {
 	@ManyToOne
 	private Sala sala;
 	
-	@OneToMany(mappedBy = "ordinazione", cascade = {CascadeType.REMOVE})
+	@OneToMany(mappedBy = "tavolo", cascade = {CascadeType.REMOVE})
 	private List<Ordinazione> ordinazioni;
 
 	

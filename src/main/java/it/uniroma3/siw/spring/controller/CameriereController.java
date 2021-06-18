@@ -23,14 +23,14 @@ public class CameriereController {
 	private CameriereValidator cameriereValidator;
 	
 	
-	@GetMapping(value = {"/admin/gestisciCamerieri"})
+	/*@GetMapping(value = {"/admin/gestisciCamerieri"})
 	public String getGestisciCamerieri(Model model) {
 		model.addAttribute("camerieri", this.cameriereService.tutti());
 		model.addAttribute("cameriere", new Cameriere());
 		return "admin/gestisciCamerieri";
 	}
 	
-	@GetMapping(value = {"camerieri"/*, "/admin/artisti"*/})
+	@GetMapping(value = {"camerieri"/*})
 	public String getCamerieri(Model model) {
 		model.addAttribute("camerieri", this.cameriereService.tutti());
 		return "camerieri";
@@ -63,6 +63,6 @@ public class CameriereController {
 	public String rimuoviCameriere(@PathVariable("id") Long id, Model model) {
 		this.cameriereService.rimuoviCameriere(id);
 		return "redirect:/admin/gestisciCamerieri"; 
-	}
+	}*/
 
 }

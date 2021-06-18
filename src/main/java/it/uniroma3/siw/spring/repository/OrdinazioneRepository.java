@@ -8,6 +8,6 @@ import it.uniroma3.siw.spring.model.Ordinazione;
 
 public interface OrdinazioneRepository extends CrudRepository<Ordinazione, Long> {
 	
-	public List<Ordinazione> findByNome(Long id);
+	/*public List<Ordinazione> findByNome(Long id);*/
 	
 }

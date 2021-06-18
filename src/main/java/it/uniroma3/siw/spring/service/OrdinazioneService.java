@@ -8,7 +8,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import it.uniroma3.siw.spring.model.Birra;
 import it.uniroma3.siw.spring.model.Ordinazione;
 import it.uniroma3.siw.spring.repository.OrdinazioneRepository;
 
@@ -42,13 +41,19 @@ public class OrdinazioneService {
 		
 	}
 	
+	@SuppressWarnings("static-access")
 	@Transactional
 	public boolean alreadyExists(Ordinazione ordinazione) {
-		List<Ordinazione> ordinazioni = this.ordinazioneRepository.findByNome(ordinazione.getId());
-		if (ordinazioni.size() > 0)
+		Optional<Ordinazione> ordinazioneDaCercare = this.ordinazioneRepository.findById(ordinazione.getId());
+		if (ordinazioneDaCercare.empty() != null) {
+			return true;
+		} 
+		return false;
+		/*List<Ordinazione> ordinazioni = this.ordinazioneRepository.findByNome(ordinazione.getId());
+		if (ordinazioni.size() > 0) 
 			return true;
 		else 
-			return false;
+			return false;*/
 	}
 	
 	@Transactional

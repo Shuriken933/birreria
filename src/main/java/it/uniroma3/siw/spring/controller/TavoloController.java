@@ -27,7 +27,7 @@ public class TavoloController {
 	private SalaService salaService;
 	
 	
-	@GetMapping(value = "/admin/gestisciTavoli")
+	/*@GetMapping(value = "/admin/gestisciTavoli")
 	public String getGestisciTavoli(Model model) {
 		model.addAttribute("tavoli", this.tavoloService.tutti());
 		model.addAttribute("sale", this.salaService.tutte());
@@ -62,6 +62,6 @@ public class TavoloController {
 	public String modificaTavolo(@ModelAttribute("tavolo") Tavolo tavolo, Model model, BindingResult bindingResult) {
 		this.tavoloService.modificaTavolo(tavolo);
 		return "redirect:/admin/gestisciTavoli";
-	}
+	}*/
 
 }

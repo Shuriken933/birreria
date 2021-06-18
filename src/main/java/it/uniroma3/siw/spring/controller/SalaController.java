@@ -22,7 +22,7 @@ public class SalaController {
 	@Autowired
 	private SalaValidator salaValidator;
 	
-	@GetMapping(value = {"/admin/gestisciSale"})
+	/*@GetMapping(value = {"/admin/gestisciSale"})
 	public String getGestisciSale(Model model) {
 		model.addAttribute("sale", this.salaService.tutte());
 		model.addAttribute("sala", new Sala());
@@ -56,6 +56,6 @@ public class SalaController {
 	public String rimuoviSala(@PathVariable("id") Long id, Model model) {
 		this.salaService.rimuoviSala(id);
 		return "redirect:/admin/gestisciSale"; 
-	}
+	}*/
 
 }
