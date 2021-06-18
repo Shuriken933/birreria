@@ -1,25 +1,36 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 
-</head>
-  <div class="header"></div>
+<head th:replace="fragments/base.html :: headerfiles(title='Homepage')"></head>
+<header class="top"></header>
 <body class="birra">
-  <div class="col-50"><a href=""><img src="birra1.png" alt=""></a></div>
-  <div class="col-50">
-  <ul>
-    <li>nome:</li>
-    <li>birrificio:</li>
-    <li>colore:</li>
-  </ul>
 
-  </div>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	<!-- Inizio MENU -->
+	<nav th:replace="fragments/base.html :: menu"></nav>
+	<!-- fine MENU -->
+	
+	<div class="col-50">
+		<a href=""><img src="birra1.png" alt=""></a>
+	</div>
+	<div class="col-50">
+		<ul>
+			<li>nome:</li>
+			<li>birrificio:</li>
+			<li>colore:</li>
+		</ul>
+
+	</div>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+		eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+		minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+		aliquip ex ea commodo consequat. Duis aute irure dolor in
+		reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+		pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+		culpa qui officia deserunt mollit anim id est laborum.</p>
+
+	<!-- inizio FOOTER -->
+	<footer th:replace="fragments/base.html :: fondo(home='/')"></footer>
+	<!-- fine FOOTER -->
+
 </body>
 </html>
- -->

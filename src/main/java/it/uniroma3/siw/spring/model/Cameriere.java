@@ -21,7 +21,7 @@ public @Data class Cameriere {
 	
 	private String nome;
 	private String cognome;
-	private Integer età;
+	private Integer eta;
 	private LocalDate assunzione;
 	private Integer durataContratto;
 	private Long numeroDiTelefono;

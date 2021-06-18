@@ -22,7 +22,7 @@ public @Data class Birra {
 	private String birrificio;
 	private String colore;
 	private String descrizione;
-	private Integer dimesione;
+	private Float dimensione;
 	private Integer prezzo;
 	
 	@ManyToMany

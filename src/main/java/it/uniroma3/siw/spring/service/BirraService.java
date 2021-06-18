@@ -40,7 +40,7 @@ public class BirraService {
 		birraDaModificare.setBirrificio(birra.getBirrificio());
 		birraDaModificare.setColore(birra.getColore());
 		birraDaModificare.setDescrizione(birra.getDescrizione());
-		birraDaModificare.setDimesione(birra.getDimesione());
+		birraDaModificare.setDimensione(birra.getDimensione());
 		birraDaModificare.setPrezzo(birra.getPrezzo());
 	}
 	

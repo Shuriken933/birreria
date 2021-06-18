@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/base.html :: headerfiles(title='Homepage')"></head>
+
+<body>
+
+	<!-- Inizio MENU -->
+	<nav th:replace="fragments/base.html :: menu"></nav>
+	<!-- fine MENU -->
+	
+	<form th:action="@{/admin/birra}" method="POST" th:object="${birra}">
+		<div th:if="${#fields.hasGlobalErrors()}">
+  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		</div>		
+		<div>
+			<div>
+				<span>Nome:</span>
+				<span><input type="text" th:field="*{nome}" /></span>
+				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+			</div>		
+			<div>
+				<span>Birrificio:</span>
+				<span><input type="text" th:field="*{birrificio}" /></span>
+				<span th:if="${#fields.hasErrors('birrificio')}" th:errors="*{birrificio}"></span>
+			</div>
+			<div>
+				<span>Colore:</span>
+				<span><input type="text" th:field="*{colore}" /></span>
+				<span th:if="${#fields.hasErrors('colore')}" th:errors="*{colore}"></span>
+			</div>
+			<div>
+				<span>Descrizione:</span>
+				<span><input type="text" th:field="*{descrizione}" /></span>
+				<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
+			</div>
+			<div>
+				<span>Dimensione:</span>
+				<span><input type="text" th:field="*{dimensione}" /></span>
+				<span th:if="${#fields.hasErrors('dimensione')}" th:errors="*{dimensione}"></span>
+			</div>
+			<div>
+				<span>Prezzo:</span>
+				<span><input type="text" th:field="*{prezzo}" /></span>
+				<span th:if="${#fields.hasErrors('prezzo')}" th:errors="*{prezzo}"></span>
+			</div>
+			<div>
+				<span><button type="submit">Invio</button></span>
+			</div>
+		</div>
+	</form>
+	
+	<!-- inizio FOOTER -->
+	<footer th:replace="fragments/base.html :: fondo(home='/')"></footer>
+	<!-- fine FOOTER -->
+</body>
+</html>

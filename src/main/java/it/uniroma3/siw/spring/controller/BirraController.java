@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+
 import it.uniroma3.siw.spring.controller.validator.BirraValidator;
 import it.uniroma3.siw.spring.model.Birra;
 import it.uniroma3.siw.spring.service.BirraService;
@@ -22,6 +24,16 @@ public class BirraController {
 	@Autowired
 	private BirraValidator birraValidator;
 	
+	@GetMapping(value = "/admin/gestisciBirre")
+	public String getGestisciBirre(Model model) {
+		return "admin/gestisciBirre";
+	}
+	
+	@GetMapping(value = "/admin/birra")
+	public String addBirra(Model model) {
+		model.addAttribute("birra", new Birra());
+		return "birraForm";
+	}
 	
 	@GetMapping(value = "/birre")
 	public String getBirre(Model model) {
@@ -29,7 +41,7 @@ public class BirraController {
 		return "birre.html";
 	}
 	
-	@GetMapping({"birra/{id}"})
+	@GetMapping({"/birra/{id}"})
 	public String getBirra(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("opera", this.birraService.birraPerId(id));
 		return "birra";
