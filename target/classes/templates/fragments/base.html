@@ -1,23 +1,46 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="headerfiles(title)">
-	<meta charset="UTF-8" />
-	<link th:href="@{/css/my-style.css}" rel="stylesheet">
-	<title th:text="${title}"></title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Base</title>
+  <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
-	<header class ="header-base" th:fragment="intestazione">
-		<h1>Birreria i Calici</h1>
-	</header>
 
-	<p>Go to the next page to see fragments in action</p>
-	<aside>
-		<div>This is a sidebar</div>
-	</aside>
-	<div class="another">This is another sidebar</div>
-	
-	<footer th:fragment="fondo(home)">
-		<a th:href="@{${home}}">Home</a>
-	</footer>
+  <!-- navbar -->
+  <header>
+    <nav>
+      <ul>
+        <li><a class="p-1" href="#">home</a></li>
+        <li><a class="p-1" href="#">home</a></li>
+        <li><a class="p-1" href="#">home</a></li>
+        <li style="float:right"><a class="p-1" href="#">login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <!-- footer -->
+  <footer>
+    <div class="col-100">
+      <div class="row">
+        <div class="col-50">
+          <a href="">home</a>
+          <a href="#">chi siamo</a>
+        </div>
+        <div class="col-50">
+          <a href="">home</a>
+          <a href="#">chi siamo</a>
+        </div>
+        <div class="col-100">
+          <p>Grazie per essere passati nella nostra birreria</p>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
+
 </html>

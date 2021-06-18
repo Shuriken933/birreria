@@ -1,17 +1,29 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/base.html :: headerfiles(title='SIW')"> </head>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HomePage</title>
+  <link rel="stylesheet" href="style.css" href="fontStyle.css">
+
+</head>
 <body>
-	<header th:replace="fragments/base.html :: intestazione"></header>
-    <div>
-    	<h4 th:text="#{header.index}">Welcome Page</h4>
-		<div>
-			<a th:href="@{/login}" th:text="#{index.login}">Accedi</a>
-   		</div>
-		<div>
-			<a th:href="@{/register}" th:text="#{index.register}">Registrati</a>
-   		</div>
+  <header>
+    <div class="container">
+      <h1>Birreria i Calici</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     </div>
-    <footer th:replace="fragments/base.html :: fondo(home='/')"></footer>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="index">
+        <div class="col-40"><a href="#"><h2>Elenco delle birre</h2></a></div>
+        <div class="col-40"><a href="#"><h2>I nostri birrifici</h2></a></div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
