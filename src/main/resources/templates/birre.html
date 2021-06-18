@@ -1,26 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Birre</title>
-  <link rel="stylesheet" href="style.css">
+<html xmlns:th="http://www.thymeleaf.org">
 
-</head>
+<head th:replace="fragments/base.html :: headerfiles(title='birre')"></head>
+
 <body class="birre">
-  <div class="container">
-    <div class="row">
 
-      <div class="col-50">
-        <a href="">Birra 1</a></div>
-      <div class="col-50"><a href="">Birra 2</a></div>
-      <div class="col-50"><a href="">Birra 3</a></div>
-    </div>
-  </div>
+	<!-- Inizio MENU -->
+	<nav th:replace="fragments/base.html :: menu"></nav>
+	<!-- fine MENU -->
 
-  <div class="container"><p>per saperne di piÃ¹ sulle nostre birre chiedere ai nostri camerieri.</p></div>
+	<div class="container">
+		<div class="row">
 
+			<div class="col-50">
+				<a href="@{/birre}">Birra 1</a>
+			</div>
+			<div class="col-50">
+				<a href="@{/birre}">Birra 2</a>
+			</div>
+			<div class="col-50">
+				<a href="@{/birre}">Birra 3</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<p>per saperne di più sulle nostre birre chiedere ai nostri
+			camerieri.</p>
+	</div>
+	
+	<!-- inizio FOOTER -->
+	<footer th:replace="fragments/base.html :: fondo(home='/')"></footer>
+	<!-- fine FOOTER -->
 
 
 </body>

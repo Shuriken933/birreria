@@ -3,26 +3,26 @@
 
 <head th:replace="fragments/base.html :: headerfiles(title='Homepage')"></head>
 
-<body>
+<body class="ordini">
 
 	<!-- Inizio MENU -->
 	<nav th:replace="fragments/base.html :: menu"></nav>
 	<!-- fine MENU -->
 
-	<div class="">Tavoli: lista dei tavoli</div>
-	<div class="">
-		<a href="#">aggiungi tavolo</a>
-	</div>
-	<div class="">
-		<a href="#">modifica cameriere</a>
-	</div>
-	<div class="">
-		<a href="#">elimina tavolo</a>
+	<div class="container">
+		<div class="col-30" class>
+			<a href="">Nuova ordinazione</a>
+		</div>
+		<div class="col-30">
+			<a href="">Modifica/aggiungi ordinazione</a>
+		</div>
+		<div class="col-30">
+			<a href="">Elimina ordinazione</a>
+		</div>
 	</div>
 
 	<!-- inizio FOOTER -->
 	<footer th:replace="fragments/base.html :: fondo(home='/')"></footer>
 	<!-- fine FOOTER -->
-
 </body>
 </html>

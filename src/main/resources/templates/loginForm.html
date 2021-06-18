@@ -1,54 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/base.html :: headerfiles(title='Login')"></head>
+<head th:replace="fragments/base.html :: headerfiles(title='Login')"> </head>
+
 <body>
 
-	<!-- inizio MENU -->
+	<!-- Inizio Navbar -->
 	<nav th:replace="fragments/base.html :: menu"></nav>
-	<!-- fine MENU -->
-
-	<header class="container mb-5">
-	<div class="row">
-			 <div class="col-lg-6 m-auto">
-		<h1>Login</h1>
-		</div>
-		 </div>
-	</header>
-
-	<!-- inizio FORM LOGIN -->
-	<main class="container">
-		<!-- 
-		<p th:if="${loginError}" class="error">nome utente o password errati</p>
-		 -->
-		 <div class="row">
-			 <div class="col-lg-6 m-auto">
-				 <form th:action="@{/login}" method="POST">
-					<div class="mb-3">
-						<label for="exampleInputEmail1" class="form-label">username</label>
-						<input name="username" type="text" class="form-control"	id="exampleInputEmail1" required>
-					</div>
-					<div class="mb-3">
-						<label for="exampleInputPassword1" class="form-label">password</label>
-						<input name="password" type="password" class="form-control"	id="exampleInputPassword1" required>
-					</div>
-					<button type="submit" class="btn btn-outline-dark">Login</button>
-				</form>
-			 </div>
-		 </div>
-		
+	<!-- fine Navbar -->
 	
+	<header></header>
+	<div>
+		<h4>Login</h4>
+	</div>
+	<form th:action="@{/login}" method="POST">
+		<div>
+			<div>
+				<span>Username:</span>
+				<span><input name="username" type="text" required /></span>
+			</div>		
+			<div>
+				<span>Password:</span>
+				<span><input name="password" type="password" required /></span>
+			</div>
+			<div>
+				<span><button type="submit">Login</button></span>
+			</div>
+		</div>
+	</form>
 		
-
-	</main>
-	<!-- inizio FORM LOGIN -->
-
-
-	<!-- inizio FOOTER -->
-	<footer th:replace="fragments/base.html :: footer"></footer>
+    <!-- inizio FOOTER -->
+	<footer th:replace="fragments/base.html :: fondo(home='/')"></footer>
 	<!-- fine FOOTER -->
 	
-	<th:block th:replace="fragments/base.html :: script"></th:block>
-
 </body>
 </html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title='Esito registrazione')"> </head>
+
+<body>
+	
+	<!-- Inizio MENU -->
+	<nav th:replace="fragments/base.html :: menu"></nav>
+	<!-- fine MENU -->
+
+	<div class="container">
+    	<h2>Registrazione avvenuta con successo!</h2>
+		<h3>Siamo contenti che lei si sia registrato al sito del nostro museo!</h3>
+		
+		<a th:href="@{/}">Torna alla home</a>
+	</div>
+	
+    <!-- inizio FOOTER -->
+	<footer th:replace="fragments/base.html :: fondo(home='/')"></footer>
+	<!-- fine FOOTER -->
+	
+</body>
+</html>
