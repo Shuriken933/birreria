@@ -1,13 +1,13 @@
 /* ! BASE */
 /* ! reset */
 :root{
-  /*palette colori*/
-  --color-1: #ece8d7; /* quasi bianco */
+  	/*palette colori*/
+  	--color-1: #ece8d7; /* quasi bianco */
 	--color-2: #f9f5b2; /* giallo */
 	--color-3: #bfbba7; /* rosso */
 	--color-4: #23231A; /* marrone */
 
-  font-size: 16px; /*dimensione di riferimento per 'rem' e 'em' */
+ 	font-size: 16px; /*dimensione di riferimento per 'rem' e 'em' */
 }
 
 body,

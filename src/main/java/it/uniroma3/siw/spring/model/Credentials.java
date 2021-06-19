@@ -16,7 +16,7 @@ public @Data class Credentials {
 	
 	public static final String DEFAULT_ROLE = "DEFAULT";
 	public static final String ADMIN_ROLE = "ADMIN";
-	public static final String CAMERIERE_ROLE = "CAMERIERE";
+	/*public static final String CAMERIERE_ROLE = "CAMERIERE";*/
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

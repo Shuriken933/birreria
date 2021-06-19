@@ -29,7 +29,14 @@
 					<li class="p-1"><a th:href="@{/admin/gestisciTavoli}">gestisci Tavoli</a></li>
 					<li class="p-1"><a th:href="@{/admin/gestisciBirre}">gestisci Birre</a></li>
 					<li class="p-1"><a th:href="@{/admin/gestisciSale}">gestisci Sale</a></li>
+					<hr>
+					<li class="p-1"><a th:href="@{/cameriere/home}">gestisci Ordinazioni</a></li>
 				</ul>
+				
+				<div sec:authorize="hasRole('ADMIN')">Questo contenuto è visto dall'amministratore</div>
+				<div sec:authorize="hasRole('USER')">Questo contenuto è visto da un utente classico</div>
+				<div sec:authorize="isAuthenticated()">Questo contenuto è visto	da un utente autenticato</div>
+				
 			</div>
 		</nav>
 		<!-- fine MENU -->

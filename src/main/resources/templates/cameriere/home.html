@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/base.html :: headerfiles(title='Homepage')"></head>
+
+<body>
+
+	<!-- Inizio MENU -->
+	<nav th:replace="fragments/base.html :: menu"></nav>
+	<!-- fine MENU -->
+	
+	<div class="container mb-3">
+	
+		
+		<div class="row">
+			<a th:each="tavolo : ${tavoli}" th:href="@{'/cameriere/home/tavolo/' + ${tavolo.id}}">
+				<div class="col-30">
+					<h3><span>nome tavolo: </span><span th:text="${tavolo.numeroTavolo}"></span></h3>
+					<p><span>capienza: </span><span th:text="${tavolo.numeroPosti}"></span></p>
+					
+				</div>
+			</a>
+		</div>
+		 
+		 
+		 <!-- 
+		 <h3 class="mb-2">1) aggiungi ordinazione</h3>
+		<form th:action="@{/cameriere/ordinazione}" method="POST" th:object="${ordinazione}">
+			<div th:if="${#fields.hasGlobalErrors()}">
+	  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+			</div>		
+			<div>
+				<div>
+					<span>Orario:</span>
+					<span><input type="time" th:field="*{orario}" /></span>
+					<span th:if="${#fields.hasErrors('orario')}" th:errors="*{orario}"></span>
+				</div>		
+				<div>
+					<label for="cameriere-select">Cameriere:</label>
+					<select th:field="*{tavolo}" id="cameriere-select">
+						<th:block th:each="singoloCameriere : ${camerieri}">
+							<option	th:text="|${singoloCameriere.nome} ${singoloCameriere.cognome}|" th:value=${singoloCameriere.id} />
+						</th:block> 
+					</select>
+				</div>
+				<div>
+					<label for="tavolo-select">Tavolo:</label>
+					<select th:field="*{tavolo}" id="tavolo-select">
+						<th:block th:each="singoloTavolo : ${tavoli}">
+							<option	th:text="${singoloTavolo.numeroTavolo}" th:value=${singoloTavolo.id} />
+						</th:block> 
+					</select>
+				</div>
+				<div>
+					<label for="birra-select">Birre:</label>
+					<select th:field="*{birraOrdinata}" id="birra-select">
+						<th:block th:each="singolaBirra : ${birre}">
+							<option	th:text="${singolaBirra.nome}" th:value=${singolaBirra.id} />
+						</th:block> 
+					</select>
+				</div>
+				<div>
+					<span><button type="submit">Invio</button></span>
+				</div>
+			</div>
+		</form>
+		  -->
+		
+	
+		<!-- 
+		<h3 class="mb-2"><a th:href="@{/}">2) modifica ordinazione</a></h3>
+		 -->
+		
+		<!-- 
+		<h3 class="mb-2">visualizzazione tavoli</h3>
+		<ul>
+			<li th:each="tavolo : ${tavoli}">
+				<a th:href="@{/cameriere/birraOrdinata}">
+					<p th:text="${tavolo.id}">id</p>
+				</a>
+				
+				<p th:text="${tavolo.numeroTavolo}">numero tavolo</p>
+			</li>
+		</ul>
+		
+		<hr class="mb-2">
+		
+		<h3 class="mb-2">visualizzazione ordinazione</h3>
+		<ul>
+			<li th:each="ordinazione : ${ordinazioni}">
+				<p th:text="${ordinazione.id}">id</p>
+				<p th:text="${ordinazione.orario}">orario</p>
+				<p th:text="${ordinazione.tavolo}">tavolo</p>
+				<ul th:each="birra : ${birre}">
+					<li th:text="${birra.nome}"></li>
+				</ul>
+			
+			<a th:href="@{'/admin/delete/birra/' + ${birra.id}}">elimina birra</a>
+			</li>
+		</ul>
+		 -->
+		
+		
+		
+	</div>
+	
+	
+	
+	
+	
+		<!-- inizio FOOTER -->
+	<footer th:replace="fragments/base.html :: footer"></footer>
+	<!-- fine FOOTER -->
+
+</body>
+</html>

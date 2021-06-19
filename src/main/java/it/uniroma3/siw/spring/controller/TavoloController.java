@@ -37,13 +37,17 @@ public class TavoloController {
 	
 	@PostMapping("/admin/tavolo")
     public String addTavolo(@ModelAttribute("tavolo") Tavolo tavolo, Model model, BindingResult bindingResult) {
-    	this.tavoloValidator.validate(tavolo, bindingResult);
+    	/*this.tavoloValidator.validate(tavolo, bindingResult);
         if (!bindingResult.hasErrors()) {
         	this.tavoloService.inserisci(tavolo);
-        	model.addAttribute("collezioni", this.tavoloService.tutti());
+        	model.addAttribute("tavoli", this.tavoloService.tutti());
             return "redirect:/admin/gestisciTavoli";
         }
-        return "admin/gestisciTavoli";
+        return "admin/gestisciTavoli";*/
+		
+		this.tavoloService.inserisci(tavolo);
+    	model.addAttribute("tavoli", this.tavoloService.tutti());
+        return "redirect:/admin/gestisciTavoli";
     }
 	
 	@GetMapping("tavolo/delete/{id}")

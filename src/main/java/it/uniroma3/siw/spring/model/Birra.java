@@ -2,11 +2,13 @@ package it.uniroma3.siw.spring.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -27,26 +29,9 @@ public @Data class Birra {
 	
 	@ManyToMany
 	private List<Ordinazione> ordinazioni;
+	
+	/*@OneToMany(mappedBy = "birra", cascade = {CascadeType.REMOVE})
+	private List<BirraOrdinata> birreOrdinate;*/
 
 	
-	/*public Long getId() {return id;}
-	public void setId(Long id) {this.id = id;}
-
-	public String getNome() {return nome;}
-	public void setNome(String nome) {this.nome = nome;}
-
-	public String getBirrificio() {return birrificio;}
-	public void setBirrificio(String birrificio) {this.birrificio = birrificio;}
-
-	public String getColore() {return colore;}
-	public void setColore(String colore) {this.colore = colore;}
-
-	public String getDescrizione() {return descrizione;}
-	public void setDescrizione(String descrizione) {this.descrizione = descrizione;}
-
-	public Integer getPrezzo() {return prezzo;}
-	public void setPrezzo(Integer prezzo) {this.prezzo = prezzo;}
-
-	public Integer getDimesione() {return dimesione;}
-	public void setDimesione(Integer dimesione) {this.dimesione = dimesione;}*/
 }

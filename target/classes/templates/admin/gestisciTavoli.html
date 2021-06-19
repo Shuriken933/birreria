@@ -7,7 +7,7 @@
 <body>
 
 	<!-- Inizio MENU -->
-	<nav th:replace="fragments/baseAdmin.html :: menu"></nav>
+	<nav th:replace="fragments/base.html :: menu"></nav>
 	<!-- fine MENU -->
 
 	<div class="">Tavoli: lista dei tavoli</div>
@@ -34,13 +34,13 @@
 						th:errors="*{numeroPosti}"></span>
 				</div>
 				<div>
-					<!-- <span>Sala:</span> <select class="form-control"
-						th:field="*{artista}" required>
+					
+					 <label for="sala-select">Sala:</label> 
+					 <select class="form-control" th:field="*{sala}" id="sala-select" required>
 
-						<th:block th:each="singoloArtista : ${artisti}">
-							<option	th:text="|${singoloArtista.nome} ${singoloArtista.cognome}|"
-								th:value=${singoloArtista.id} />
-						</th:block> -->
+						<th:block th:each="singolaSala : ${sale}">
+							<option	th:text="${singolaSala.nome}" th:value=${singolaSala.id} />
+						</th:block> 
 
 					</select>
 				</div>

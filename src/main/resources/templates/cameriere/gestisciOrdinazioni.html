@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/baseAdmin.html :: headerfiles(title='Homepage')"></head>
+
+<body>
+
+	<!-- Inizio MENU -->
+	<nav th:replace="fragments/baseAdmin.html :: menu"></nav>
+	<!-- fine MENU -->
+	
+	<div class="container">
+	
+	<h3 class="mb-2">fai un'ordinazione</h3>
+		<form th:action="@{/cameriere/ordinazione}" method="POST" th:object="${ordinazione}">
+		
+			<div th:if="${#fields.hasGlobalErrors()}">
+	  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+			</div>	
+		 
+				
+			<div th:each="birra : {birre}">
+			
+				<input type="number" class="form-control" id="quantityInput" placeholder="0" th:field="${birraOrdinata.birra}">
+				<label for="quantityInput">quantità</label>
+			
+				<input type="number" class="form-control" id="quantityInput" placeholder="0" th:field="${birraOrdinata.quantità}">
+				<label for="quantityInput">quantità</label>
+				
+			</div>
+			
+		</form>
+	
+	</div>
+
+	
+	
+	
+		
+		
+		
+		
+
+	<!-- inizio FOOTER -->
+	<footer th:replace="fragments/baseAdmin.html :: footer"></footer>
+	<!-- fine FOOTER -->
+
+</body>
+</html>
