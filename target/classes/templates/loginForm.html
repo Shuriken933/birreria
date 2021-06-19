@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/base.html :: headerfiles(title='Login')"> </head>
+	<head th:replace="fragments/base.html :: headerfiles(title='Login')"> </head>
 
 <body>
 
@@ -9,28 +9,31 @@
 	<nav th:replace="fragments/base.html :: menu"></nav>
 	<!-- fine Navbar -->
 	
-	<header></header>
-	<div>
-		<h4>Login</h4>
+	<header class="container"><h4>Login</h4></header>
+	
+	<div class="container mb-3">
+		<form th:action="@{/login}" method="POST">
+			<table>
+				<tr>
+					<td class="p-1">Username</td>
+					<td><input name="username" type="text" required /></td>
+				</tr>
+				<tr>
+					<td class="p-1">Password</td>
+					<td><input name="password" type="password" required /></td>
+				</tr>
+				<tr>
+					<td>
+						<button type="submit">Login</button>
+					</td>
+				</tr>
+			</table>	
+		</form>
 	</div>
-	<form th:action="@{/login}" method="POST">
-		<div>
-			<div>
-				<span>Username:</span>
-				<span><input name="username" type="text" required /></span>
-			</div>		
-			<div>
-				<span>Password:</span>
-				<span><input name="password" type="password" required /></span>
-			</div>
-			<div>
-				<span><button type="submit">Login</button></span>
-			</div>
-		</div>
-	</form>
+	
 		
     <!-- inizio FOOTER -->
-	<footer th:replace="fragments/base.html :: fondo(home='/')"></footer>
+	<footer th:replace="fragments/base.html :: footer"></footer>
 	<!-- fine FOOTER -->
 	
 </body>

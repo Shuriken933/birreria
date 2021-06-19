@@ -9,7 +9,7 @@
 	<nav th:replace="fragments/base.html :: menu"></nav>
 	<!-- fine MENU -->
 	
-	<header>
+	<header class="mb-3">
 		<div class="container">
 			<h1>Birreria i Calici</h1>
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
@@ -22,13 +22,13 @@
 		</div>
 	</header>
 
-	<div class="container">
+	<div class="container mb-4">
 		<div class="row">
 			<div class="index">
-				<div class="col-40">
+				<div class="col-40 p-2 mb-2">
 					<a th:href="@{/birre}"><h2>Elenco delle birre</h2></a>
 				</div>
-				<div class="col-40">
+				<div class="col-40 p-2 mb-2">
 					<a th:href="@{/admin/gestisciCamerieri}"><h2>I nostri birrifici</h2></a>
 				</div>
 			</div>
@@ -36,7 +36,7 @@
 	</div>
 	
 	<!-- inizio FOOTER -->
-	<footer th:replace="fragments/base.html :: fondo(home='/')"></footer>
+	<footer th:replace="fragments/base.html :: footer"></footer>
 	<!-- fine FOOTER -->
 </body>
 </html>

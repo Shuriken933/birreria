@@ -9,28 +9,42 @@
 	<nav th:replace="fragments/base.html :: menu"></nav>
 	<!-- fine MENU -->
 
-	<div class="container">
+	<div class="container mb-4">
 		<div class="row">
 
-			<div class="col-50">
+			<div class="col-30 mb-3 p-2 pannello-birre">
+				<img th:src="@{/img/birre/birra-classica.png}" alt="birra">
+				<h2>Nome_della_birra</h2>
+				<a th:href="@{/birra.html}">Birra 1</a>
+			</div>
+			<div class="col-30 mb-3 p-2 pannello-birre">
+				<img th:src="@{'/img/birre/birra-classica.png'}" alt="birra">
+				<h2>Nome_della_birra</h2>
 				<a th:href="@{/birra/}">Birra 1</a>
 			</div>
-			<div class="col-50">
-				<a th:href="@{/birra/}">Birra 2</a>
+			<div class="col-30 mb-3 p-2 pannello-birre">
+				<img th:src="@{'/img/birre/birra-classica.png'}" alt="birra">
+				<h2>Nome_della_birra</h2>
+				<a th:href="@{/birra/}">Birra 1</a>
 			</div>
-			<div class="col-50">
-				<a th:href="@{/birra/}">Birra 3</a>
+			<div class="col-30 mb-3 p-2 pannello-birre">
+				<img th:src="@{'/img/birre/birra-classica.png'}" alt="birra">
+				<h2>Nome_della_birra</h2>
+				<a th:href="@{/birra/}">Birra 1</a>
+			</div>
+			<div class="col-30 mb-3 p-2 pannello-birre">
+				<img th:src="@{'/img/birre/birra-classica.png'}" alt="birra">
+				<h2>Nome_della_birra</h2>
+				<a th:href="@{/birra/}">Birra 1</a>
 			</div>
 		</div>
+		
+		<p>per saperne di piÃ¹ sulle nostre birre chiedere ai nostri camerieri</p>
 	</div>
 
-	<div class="container">
-		<p>per saperne di più sulle nostre birre chiedere ai nostri
-			camerieri.</p>
-	</div>
 	
 	<!-- inizio FOOTER -->
-	<footer th:replace="fragments/base.html :: fondo(home='/')"></footer>
+	<footer th:replace="fragments/base.html :: footer"></footer>
 	<!-- fine FOOTER -->
 
 
