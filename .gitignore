@@ -135,6 +135,9 @@ buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
 
+### Sensitive Data ###
+src/main/resources/application.properties
+
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
