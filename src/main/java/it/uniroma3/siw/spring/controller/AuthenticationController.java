@@ -37,7 +37,7 @@ public class AuthenticationController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET) 
 	public String showLoginForm (Model model) {
-		return "loginForm";
+		return "loginForm.html";
 	}
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET) 
@@ -52,8 +52,12 @@ public class AuthenticationController {
     	Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
     	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
             return "admin/home";
+        }else if(credentials.getRole().equals(Credentials.CAMERIERE_ROLE)) {
+        	return "cameriere/home";
+        }else {
+        	return "index";
         }
-        return "cameriere/gestisciOrdinazioni";
+        /*return "cameriere/gestisciOrdinazioni";*/
     }
 	
     @RequestMapping(value = { "/register" }, method = RequestMethod.POST)

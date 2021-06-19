@@ -8,27 +8,26 @@
 	<!-- Inizio MENU -->
 	<nav th:replace="fragments/base.html :: menu"></nav>
 	<!-- fine MENU -->
-
-	<div class="">birre: lista dei birre</div>
-	<div class="">
-		<a th:href="@{/admin/birra}">aggiungi birra</a>
-	</div>
-	<div class="">
-		<a th:href="@{/}">modifica birra</a>
-	</div>
-	<div class="">
+	
+	<div class="container mb-3">
+		
+		<h3 class="mb-2"><a th:href="@{/admin/birra}">1) aggiungi birra</a></h3>
+		<h3 class="mb-2"><a th:href="@{/}">2) modifica birra</a></h3>
+		
+		<hr class="mb-2">
+		
+		<h3 class="mb-2">visualizzazione birre</h3>
+		<ul>
+			<li th:each="birra : ${birre}">
+			<p th:text="${birra.nome}">Birra1</p>
+			<p th:text="${birra.birrificio}">BdB</p>
+			<a th:href="@{'/admin/delete/birra/' + ${birra.id}}">elimina birra</a>
+			</li>
+		</ul>
 		
 	</div>
 	
-	2)Visualizzazione birre:
 	
-	<ul>
-		<li th:each="birra : ${birre}">
-		<p th:text="${birra.nome}">Birra1</p>
-		<p th:text="${birra.birrificio}">BdB</p>
-		<a th:href="@{'/admin/delete/birra/' + ${birra.id}}">elimina birra</a>
-		</li>
-	</ul>
 
 	<!-- inizio FOOTER -->
 	<footer th:replace="fragments/base.html :: footer"></footer>

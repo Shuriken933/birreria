@@ -80,6 +80,9 @@ h3{font-size: 1.5rem; word-break: break-word; margin: 0;}
 h4{font-size: 1.25rem; word-break: break-word; margin: 0;}
 p{font-size: 1rem; line-height: 1.65; word-break: break-word; margin: 0;}
 
+a{transition: all .4s cubic-bezier(.215,.61,.355,1);}
+a:hover{text-decoration: none;}
+
 
 /* ! elements */
 button{
@@ -104,6 +107,8 @@ input{
 
 img {object-fit: cover;}
 
+ul{list-style-type: none;}
+
 
 
 /* ! --------------------- */
@@ -121,23 +126,49 @@ nav {
 }
 
 nav ul {
-  list-style-type: none;
   margin: 20px;
   padding: 0;
-  /*position: fixed;*/
 }
 
 nav ul li {
   display: inline;
-  border-right: 1px solid #bbb;
+  /*border-right: 1px solid #bbb;*/
 }
+
+nav ul.menu-authenticated{
+  position: absolute;
+  right: 0;
+}
+nav ul.menu-authenticated li{
+  display: block;
+}
+
+ul.dropdown-menu{
+  box-shadow: none;
+  border: 1px solid #ddd;
+  margin-top: auto;
+  margin-left: -25px;
+  border-radius: 25px;
+  z-index: 20;
+}
+ul.primary ul.dropdown-menu li a{ border: none; border-radius: 0px;}
+ul.primary li a {padding: 22px 14px 22px 14px;border-radius: 20px;}
+
+ul.primary li.dropdown a {padding-right: 20px;}
+
+
+
+
+
+
+
+
+
 
 /* ! footer */
 footer {
   background: #fff;
 }
-
-footer ul{list-style-type: none;}
 
 footer li{
   display: inline-block;
