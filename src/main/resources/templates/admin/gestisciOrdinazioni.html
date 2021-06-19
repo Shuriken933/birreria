@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/baseAdmin.html :: headerfiles(title='Homepage')"></head>
+
+<body>
+
+	<!-- Inizio MENU -->
+	<nav th:replace="fragments/baseAdmin.html :: menu"></nav>
+	<!-- fine MENU -->
+
+	<div class="">Ordinazioni: lista delle ordinazioni</div>
+	<div class="">
+		<a href="#">aggiungi ordinazione</a>
+	</div>
+	<div>
+	<!-- inizio FORM -->
+		<form th:action="@{/cameriere/ordinazione" method="POST" th:object="${ordinazione}">
+			<div th:if="${#fields.hasGlobalErrors()}">
+				<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+			</div>
+			<div>
+				<div>
+					<span>Cameriere:</span> 
+					<span><input type="text" th:field="*{orario}" /></span> 
+						<span th:if="${#fields.hasErrors('orario')}" th:errors="*{orario}"></span>
+				</div>
+				<div>
+					<span>tavolo:</span>
+					<span><input type="text" th:field="*{numeroPosti}" /></span>
+					<span th:if="${#fields.hasErrors('numeroPosti')}" th:errors="*{numeroPosti}"></span>
+				</div>
+				<div>
+					<span>birre:</span>
+					<span><input type="text" th:field="*{numeroPosti}" /></span>
+					<span th:if="${#fields.hasErrors('numeroPosti')}" th:errors="*{numeroPosti}"></span>
+				</div>
+				<div>
+					<span><button type="submit">Registra</button></span>
+				</div>
+			</div>
+		</form>
+		<!-- fine FORM -->
+	</div>
+	
+		
+	<div class="">
+		<a href="#">modifica cameriere</a>
+	</div>
+	<div class="">
+		<a href="#">elimina tavolo</a>
+	</div>
+
+	<!-- inizio FOOTER -->
+	<footer th:replace="fragments/baseAdmin.html :: footer"></footer>
+	<!-- fine FOOTER -->
+
+</body>
+</html>

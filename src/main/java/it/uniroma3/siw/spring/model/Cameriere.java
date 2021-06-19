@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 @Entity
@@ -22,6 +24,8 @@ public @Data class Cameriere {
 	private String nome;
 	private String cognome;
 	private Integer eta;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate assunzione;
 	private Integer durataContratto;
 	private Long numeroDiTelefono;

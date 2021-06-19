@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.siw.spring.controller.validator.OrdinazioneValidator;
-import it.uniroma3.siw.spring.model.Birra;
 import it.uniroma3.siw.spring.model.Ordinazione;
 import it.uniroma3.siw.spring.service.OrdinazioneService;
 
@@ -23,8 +22,15 @@ public class OrdinazioneController {
 	@Autowired
 	private OrdinazioneValidator ordinazioneValidator;
 	
+	@GetMapping(value = "/cameriere/gestisciOrdinazioni")
+	public String getGestisciOrdinazioni(Model model) {
+//		model.addAttribute("tavoli", this.tavoloService.tutti());
+//		model.addAttribute("sale", this.salaService.tutte());
+		model.addAttribute("ordinazione", new Ordinazione());
+		return "cameriere/gestisciOrdinazioni";
+	}
 	
-	/*@GetMapping(value = "/ordinazioni")
+	@GetMapping(value = "/ordinazioni")
 	public String getOrdinazioni(Model model) {
 		model.addAttribute("ordinazioni", this.ordinazioneService.tutte());
 		return "ordinazioni.html";
@@ -45,6 +51,6 @@ public class OrdinazioneController {
             return "redirect:/cameriere/gestisciOrdinazioni";
         }
         return "cameriere/gestisciOrdinazioni";
-    }*/
+    }
 
 }

@@ -35,12 +35,12 @@
 				<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
 			</div>
 			<div>
-				<span>Dimensione:</span>
+				<span>Dimensione (cl):</span>
 				<span><input type="text" th:field="*{dimensione}" /></span>
 				<span th:if="${#fields.hasErrors('dimensione')}" th:errors="*{dimensione}"></span>
 			</div>
 			<div>
-				<span>Prezzo:</span>
+				<span>Prezzo (Euro):</span>
 				<span><input type="text" th:field="*{prezzo}" /></span>
 				<span th:if="${#fields.hasErrors('prezzo')}" th:errors="*{prezzo}"></span>
 			</div>

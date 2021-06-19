@@ -14,10 +14,11 @@
 
 			<div class="col-30 mb-3 p-2 pannello-birre">
 				<img th:src="@{/img/birre/birra-classica.png}" alt="birra">
-				<h2>Nome_della_birra</h2>
-				<a th:href="@{/birra.html}">Birra 1</a>
+				<h2> <a href="birra.html" th:href="@{'/birra/' + ${birra.id}}" 
+				   	th:text="${birra.nome}">Birra1</a></h2>
+				<!-- <a th:href="@{/birra.html}">Birra 1</a> -->
 			</div>
-			<div class="col-30 mb-3 p-2 pannello-birre">
+			<!-- <div class="col-30 mb-3 p-2 pannello-birre">
 				<img th:src="@{'/img/birre/birra-classica.png'}" alt="birra">
 				<h2>Nome_della_birra</h2>
 				<a th:href="@{/birra/}">Birra 1</a>
@@ -36,7 +37,7 @@
 				<img th:src="@{'/img/birre/birra-classica.png'}" alt="birra">
 				<h2>Nome_della_birra</h2>
 				<a th:href="@{/birra/}">Birra 1</a>
-			</div>
+			</div> -->
 		</div>
 		
 		<p>per saperne di più sulle nostre birre chiedere ai nostri camerieri</p>

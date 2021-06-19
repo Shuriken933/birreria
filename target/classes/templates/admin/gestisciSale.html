@@ -38,15 +38,28 @@
 
 	</div>
 	<div class="">
-		<a th:href="@{}">modifica sala</a>
+		<a th:href="@{/}">modifica sala</a>
 	</div>
-	<div class="">
-		<a th:href="@{}">elimina sala</a>
+<!-- 	<div class="">
+		<a th:href="@{'/sala/delete/' + ${sala.id}}">elimina sala</a>
 	</div>
+	 -->
+	2) VISUALIZZAZIONE
+	
+	<ul>
+		<li th:each="sala : ${sale}">
+		<p th:text="${sala.nome}">Sala1</p>
+		<a th:href="@{'/sala/delete/' + ${sala.id}}">Elimina</a>
+		<a>Modifica</a>
+		</li>
+	</ul>
+	
 
 	<!-- inizio FOOTER -->
 	<footer th:replace="fragments/base.html :: footer"></footer>
 	<!-- fine FOOTER -->
+	
+	
 
 </body>
 </html>

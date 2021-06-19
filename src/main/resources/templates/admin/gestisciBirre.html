@@ -17,8 +17,18 @@
 		<a th:href="@{/}">modifica birra</a>
 	</div>
 	<div class="">
-		<a th:href="@{/}">elimina birra</a>
+		
 	</div>
+	
+	2)Visualizzazione birre:
+	
+	<ul>
+		<li th:each="birra : ${birre}">
+		<p th:text="${birra.nome}">Birra1</p>
+		<p th:text="${birra.birrificio}">BdB</p>
+		<a th:href="@{'/admin/delete/birra/' + ${birra.id}}">elimina birra</a>
+		</li>
+	</ul>
 
 	<!-- inizio FOOTER -->
 	<footer th:replace="fragments/base.html :: footer"></footer>

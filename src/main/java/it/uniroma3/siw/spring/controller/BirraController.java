@@ -26,6 +26,7 @@ public class BirraController {
 	
 	@GetMapping(value = "/admin/gestisciBirre")
 	public String getGestisciBirre(Model model) {
+		model.addAttribute("birre", this.birraService.tutte());
 		return "admin/gestisciBirre";
 	}
 	

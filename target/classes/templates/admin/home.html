@@ -9,7 +9,11 @@
 	<nav th:replace="fragments/baseAdmin.html :: menu"></nav>
 	<!-- fine MENU -->
 	
-    pulsante che mostra ogni ordinazione di un tavolo ed elimina le ordinazioni una volta pagato
+  <a th:href="@{/admin/gestisciPagamenti}">gestisci Pagamenti</a>
+  <a th:href="@{/admin/gestisciCamerieri}">gestisci Camerieri</a>
+  <a th:href="@{/admin/gestisciTavoli}">gestisci Tavoli</a>
+  <a th:href="@{/admin/gestisciBirre}">gestisci Birre</a>
+  <a th:href="@{/admin/gestisciSale}">gestisci Sale</a>
 
 	<!-- inizio FOOTER -->
 	<footer th:replace="fragments/baseAdmin.html :: footer"></footer>
