@@ -31,7 +31,7 @@ public @Data class Birra {
 	@Column(nullable = true, length = 64)
     private String immagine;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy = "birre")
 	private List<Ordinazione> ordinazioni;
 	
 	/*@OneToMany(mappedBy = "birra", cascade = {CascadeType.REMOVE})

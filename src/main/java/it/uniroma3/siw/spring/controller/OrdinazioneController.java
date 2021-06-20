@@ -46,6 +46,9 @@ public class OrdinazioneController {
 	private BirraService birraService;
 	
 	@Autowired
+	private CameriereService cameriereService;
+	
+	@Autowired
 	private SalaService salaService;
 	
 	@Autowired
@@ -106,9 +109,12 @@ public class OrdinazioneController {
 
 	@GetMapping(value = "/cameriere/gestisciOrdinazioni")
 	public String getGestisciOrdinazioni(Model model) {
+		model.addAttribute("ordinazioni", this.ordinazioneService.tutte());
 		model.addAttribute("tavoli", this.tavoloService.tutti());
-		model.addAttribute("sale", this.salaService.tutte());
-		model.addAttribute("birre", this.birraService.tutte());
+		model.addAttribute("camerieri", this.cameriereService.tutti());
+		/*model.addAttribute("sale", this.salaService.tutte());*/
+		model.addAttribute("birreDaMostrare", this.birraService.tutte());
+		
 		model.addAttribute("ordinazione", new Ordinazione());
 		return "cameriere/gestisciOrdinazioni";
 	}
@@ -127,13 +133,25 @@ public class OrdinazioneController {
 	
 	@PostMapping(value = "/cameriere/ordinazione")
     public String addOrdinazione(@ModelAttribute("ordinazione") Ordinazione ordinazione, Model model, BindingResult bindingResult) {
-    	this.ordinazioneValidator.validate(ordinazione, bindingResult);
+    	
+		/*System.out.println("ordinazione id (dopo click bottone): " + ordinazione.getId());*/
+		
+    	
+    	/*this.ordinazioneValidator.validate(ordinazione, bindingResult);
         if (!bindingResult.hasErrors()) {
+        	LocalDateTime now = LocalDateTime.now();
+        	ordinazione.setOrario(now);
         	this.ordinazioneService.inserisci(ordinazione);
         	model.addAttribute("ordinazioni", this.ordinazioneService.tutte());
             return "redirect:/cameriere/gestisciOrdinazioni";
         }
-        return "cameriere/gestisciOrdinazioni";
+        return "cameriere/gestisciOrdinazioni";*/
+		
+		LocalDateTime now = LocalDateTime.now();
+    	ordinazione.setOrario(now);
+    	this.ordinazioneService.inserisci(ordinazione);
+    	model.addAttribute("ordinazioni", this.ordinazioneService.tutte());
+        return "redirect:/cameriere/gestisciOrdinazioni";
     }
 
 }

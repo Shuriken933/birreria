@@ -31,7 +31,7 @@ public @Data class Ordinazione {
 	@ManyToOne
 	private Tavolo tavolo;
 	
-	@ManyToMany(mappedBy = "ordinazioni")
+	@ManyToMany/*(mappedBy = "ordinazioni")*/
 	private List<Birra> birre;
 	
 	private String nota;
@@ -39,5 +39,4 @@ public @Data class Ordinazione {
 	/*@OneToMany(mappedBy = "ordinazione", cascade = {CascadeType.REMOVE})
 	private List<BirraOrdinata> birreOrdinate;*/
 
-	
 }

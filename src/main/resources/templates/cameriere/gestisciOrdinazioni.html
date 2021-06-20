@@ -11,43 +11,88 @@
 	
 	<div class="container">
 	
-		<h3 class="mb-2">aggiungi birre all'ordinazione</h3>
+		<h3 class="mb-2">1) Fai un'ordinazione</h3>
 		
-		<form action="#" th:action="@{/cameriere/ordinazione}" th:object="${ordinazione}" method="post">
+		<form class="mb-3" action="#" th:action="@{/cameriere/ordinazione}" th:object="${ordinazione}" method="post">
 			<table>
 				<tr>
-					<!-- <td>
-						<label>Scelta</label>
-					</td>
 					<td>
-						<select multiple th:field="*{birre}" required>	 
-							<th:block th:each="singolaBirra : ${birre}">
-								<option th:text="${singolaBirra.nome}" th:value=${singolaBirra.id} />
-							</th:block>		
-						</select>
-					</td> -->
-					<td>
-						<label for="birra-select">Birra:</label> 
-						 <select multiple th:field="*{birre}" id="birra-select" required>
-							<th:block th:each="birra : ${birre}">
-								<option	th:text="${birra.nome}" th:value=${birra.id} />
+						<label for="cameriere-select">Cameriere:</label> 
+						 <select th:field="*{cameriere}" id="cameriere-select" required>
+							<th:block th:each="cameriereSelezionato : ${camerieri}">
+								<option	th:text="${cameriereSelezionato.nome}" th:value=${cameriereSelezionato.id} />
 							</th:block> 
 						</select>
 					</td>
 				</tr>
+				
+				<tr>
+					<td>
+						<label for="tavolo-select">Tavolo:</label> 
+						 <select th:field="*{tavolo}" id="tavolo-select" required>
+							<th:block th:each="tavoloSelezionato : ${tavoli}">
+								<option	th:text="${tavoloSelezionato.numeroTavolo}" th:value=${tavoloSelezionato.id} />
+							</th:block> 
+						</select>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<label for="birra-select">Birra:</label> 
+						 <select th:field="*{birre}" id="birra-select" required>
+							<th:block th:each="birraSelezionata : ${birreDaMostrare}">
+								<option	th:text="${birraSelezionata.nome}" th:value=${birraSelezionata.id} />
+							</th:block> 
+						</select>
+					</td>
+				</tr>
+				
 				<tr>
 					<td><label>nota</label></td>
 					<td><input type="text" placeholder="nota" th:field="*{nota}" required/> </td>
-				</tr>
-				<tr>
-					<td><label>orario</label></td>
-					<td><input type="text" placeholder="orario" th:field="*{orario}" required/> </td>
 				</tr>
 				
 
 			</table>
 			<button type="submit">Conferma</button>
 		</form>
+		
+		
+		<h3 class="mb-2">2) Visualizza le ordinazioini</h3>
+		<table class="mb-3">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>tavolo</th>
+					<th>cameriere</th>
+					<th>orario</th>
+					<th>birra</th>
+					<th>nota</th>
+				</tr>
+			
+			</thead>
+			<tbody>
+				<tr th:each="ordinazione : ${ordinazioni}">
+					<td th:text="${ordinazione.id}">ID</td>
+					<td th:text="${ordinazione.tavolo}">ID</td>
+					<td th:text="${ordinazione.cameriere}">ID</td>
+					<td th:text="${ordinazione.orario}">ID</td>
+					<td>
+						<table>
+							<tr th:each="birra : ${ordinazione.birre}">
+								<td th:text="${birra.nome}"></td>
+							</tr>
+						</table>
+					
+					</td>
+					<td th:text="${ordinazione.nota}">ID</td>
+				</tr>
+			</tbody>
+			
+		</table>
+		
+		
 		
 		
 		

@@ -48,7 +48,6 @@
 				<tr>
 					<td>immagine:</td>
 					<td><input type="file" name="image"  th:field="*{immagine}" accept="image/png, image/jpeg, image/jpg" required/></td>
-					<span th:if="${#fields.hasErrors('prezzo')}" th:errors="*{prezzo}"></span>
 				</tr>
 				<tr>
 					<td><button type="submit">Invio</button></td>
