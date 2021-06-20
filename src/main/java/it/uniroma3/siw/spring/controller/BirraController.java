@@ -44,7 +44,7 @@ public class BirraController {
 	
 	@GetMapping({"/birra/{id}"})
 	public String getBirra(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("opera", this.birraService.birraPerId(id));
+		model.addAttribute("birra", this.birraService.birraPerId(id));
 		return "birra";
 	}
 	

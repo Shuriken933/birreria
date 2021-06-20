@@ -2,32 +2,35 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="fragments/base.html :: headerfiles(title='Homepage')"></head>
-<header class="top"></header>
+
 <body class="birra">
 
 	<!-- Inizio MENU -->
 	<nav th:replace="fragments/base.html :: menu"></nav>
 	<!-- fine MENU -->
 	
+	<header class="top p-2">
+		<h1 class="text-center" th:text="${birra.nome}">nome</h1>
+		<p class="text-center">
+			<span>birrificio</span>
+			<strong th:text="${birra.birrificio}">birrificio</strong>
+		</p>
+	</header>
+	
 	<!-- <div class="col-50">
 		<a href=""><img src="birra1.png" alt=""></a>
 	</div> -->
-	<div class="col-50">
-<!-- 		<img class="my-4" th:src="@{'/img/birre/' + ${birra.immagine}}" width="100%" height="350">
- -->	<ul>
-			<li>nome: <strong th:text="${birra.nome}">birra1 </strong></li>
-			<li>birrificio: <strong th:text="${birra.birrificio}">birrificio</strong></li>
-			<li>colore: <strong th:text="${birra.colore}">colore </strong></li>
+	<div class="col-50 text-center" style="margin-top:-80px;">
+		<img class="" th:src="@{'/img/' + ${birra.immagine}}">
+		<ul>
+			<li>colore: <strong th:text="${birra.colore}">colore</strong></li>
+			<li>dimensione: <strong>cl</strong> <strong th:text="${birra.dimensione}">birra1 </strong></li>
+			<li>prezzo <strong>€</strong>  <strong th:text="${birra.prezzo}">birra1 </strong></li>
 		</ul> 
 
+		<p class="mb-2" th:text="${birra.descrizione}">descrizione</p>
 	</div>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-		eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-		minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-		aliquip ex ea commodo consequat. Duis aute irure dolor in
-		reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-		pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-		culpa qui officia deserunt mollit anim id est laborum.</p>
+	
 
 	<!-- inizio FOOTER -->
 	<footer th:replace="fragments/base.html :: footer"></footer>

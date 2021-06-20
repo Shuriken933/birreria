@@ -15,8 +15,9 @@
 
 			<div class="col-30 mb-3 p-2 pannello-birre" th:each="birra : ${birre}">
 				<img class="" th:src="@{'/img/' + ${birra.immagine}}">
-				<h2> <a href="birra.html" th:href="@{'/birra/' + ${birra.id}}" 
-				   	th:text="${birra.nome}">Birra1</a></h2>
+				<h2> 
+					<a href="birra.html" th:href="@{'/birra/' + ${birra.id}}" th:text="${birra.nome}">Birra1</a>
+				</h2>
 				<!-- <a th:href="@{/birra.html}">Birra 1</a> -->
 			</div>
 		</div>
