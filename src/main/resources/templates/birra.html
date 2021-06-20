@@ -9,15 +9,16 @@
 	<nav th:replace="fragments/base.html :: menu"></nav>
 	<!-- fine MENU -->
 	
-	<div class="col-50">
+	<!-- <div class="col-50">
 		<a href=""><img src="birra1.png" alt=""></a>
-	</div>
+	</div> -->
 	<div class="col-50">
-		<ul>
-			<li>nome:</li>
-			<li>birrificio:</li>
-			<li>colore:</li>
-		</ul>
+<!-- 		<img class="my-4" th:src="@{'/img/birre/' + ${birra.immagine}}" width="100%" height="350">
+ -->	<ul>
+			<li>nome: <strong th:text="${birra.nome}">birra1 </strong></li>
+			<li>birrificio: <strong th:text="${birra.birrificio}">birrificio</strong></li>
+			<li>colore: <strong th:text="${birra.colore}">colore </strong></li>
+		</ul> 
 
 	</div>
 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do

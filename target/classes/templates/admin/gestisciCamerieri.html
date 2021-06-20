@@ -20,17 +20,17 @@
 			<table>
 				<tr>
 					<td>Nome:</td> 
-					<td><input type="text" th:field="*{nome}" /></td> 
+					<td><input type="text" th:field="*{nome}" required/></td> 
 						<td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></td>
 				</tr>
 				<tr>
 					<td>Cognome:</td>
-					 <td><input type="text" th:field="*{cognome}" /></td>
+					 <td><input type="text" th:field="*{cognome}" required/></td>
 						<span th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span>
 				</tr>
 				<tr>
 					<td>Età:</td>
-					<td><input type="text" th:field="*{eta}" /></td> 
+					<td><input type="text" th:field="*{eta}" required/></td> 
 					<span th:if="${#fields.hasErrors('eta')}" th:errors="*{eta}"></span>
 				</tr>
 				<tr>
@@ -40,12 +40,12 @@
 				</tr>
 				<tr>
 					<td>Durata Contratto (mesi):</td> 
-					<td><input type="text" th:field="*{durataContratto}" /></td> 
+					<td><input type="text" th:field="*{durataContratto}" required/></td> 
 					<span th:if="${#fields.hasErrors('durataContratto')}" th:errors="*{durataContratto}"></span>
 				</tr>
 				<tr>
 					<td>Numero di Telefono:</td>
-					<td><input type="text" th:field="*{numeroDiTelefono}" /></td>
+					<td><input type="text" th:field="*{numeroDiTelefono}" required/></td>
 					<span th:if="${#fields.hasErrors('numeroDiTelefono')}" th:errors="*{numeroDiTelefono}"></span>
 				</tr>
 				<tr>
@@ -59,8 +59,8 @@
 		<h3 class="mb-2">2) visualizzazione</h3>
 		<ul>
 			<li th:each="cameriere : ${camerieri}">
-			<p th:text="${cameriere.id}">id</p>
-			<p th:text="|${cameriere.nome} ${cameriere.nome}|">cameriere</p>
+			<p>Numero Id: <span th:text="${cameriere.id}">id</span></p> 
+			<p th:text="|${cameriere.nome} ${cameriere.cognome}|">cameriere</p>
 			<span>
 				<a th:href="@{'/admin/delete/cameriere/' + ${cameriere.id}}">elimina</a>
 				<a href="#">modifica</a>

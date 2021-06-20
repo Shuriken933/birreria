@@ -16,7 +16,7 @@
 		<form action="#" th:action="@{/cameriere/ordinazione}" th:object="${ordinazione}" method="post">
 			<table>
 				<tr>
-					<td>
+					<!-- <td>
 						<label>Scelta</label>
 					</td>
 					<td>
@@ -25,11 +25,23 @@
 								<option th:text="${singolaBirra.nome}" th:value=${singolaBirra.id} />
 							</th:block>		
 						</select>
+					</td> -->
+					<td>
+						<label for="birra-select">Birra:</label> 
+						 <select multiple th:field="*{birre}" id="birra-select" required>
+							<th:block th:each="birra : ${birre}">
+								<option	th:text="${birra.nome}" th:value=${birra.id} />
+							</th:block> 
+						</select>
 					</td>
 				</tr>
 				<tr>
 					<td><label>nota</label></td>
-					<td><input type="text" placeholder="nota" th:field="*{nota}"> </td>
+					<td><input type="text" placeholder="nota" th:field="*{nota}" required/> </td>
+				</tr>
+				<tr>
+					<td><label>orario</label></td>
+					<td><input type="text" placeholder="orario" th:field="*{orario}" required/> </td>
 				</tr>
 				
 
@@ -38,9 +50,21 @@
 		</form>
 		
 		
-			 
 		
-	
+		<!-- <h3 class="mb-3">2) visualizzazione</h3>
+		<ul>
+			<li th:each="ordine : ${ordini}">
+			<p>Numero Id: <span th:text="${ordine.id}">id</span></p> 
+			<p th:text="${ordine.birra.nome}">birre</p>
+			<p th:text="${ordine.nota}">nota</p>
+			<span>
+				<a th:href="@{'/admin/delete/cameriere/' + ${cameriere.id}}">elimina</a>
+				<a href="#">modifica</a>
+			
+			</span>
+			
+			</li>
+		</ul> -->
 	</div>
 
 

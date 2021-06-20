@@ -21,12 +21,12 @@
 			<table>
 				<tr>
 					<td>Nome:</td> 
-					<td><input type="text" th:field="*{nome}" /></td> 
+					<td><input type="text" th:field="*{nome}" required/></td> 
 						<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
 				</tr>
 				<tr>
 					<td>Descrizione:</td>
-					<td><input type="text" th:field="*{descrizione}" /></td>
+					<td><input type="text" th:field="*{descrizione}" required/></td>
 					<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
 				</tr>
 				<tr>

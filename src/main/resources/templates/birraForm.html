@@ -17,32 +17,37 @@
 			<table>
 				<tr>
 					<td>Nome:</td>
-					<td><input type="text" th:field="*{nome}" /></td>
+					<td><input type="text" th:field="*{nome}" required/></td>
 					<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
 				</tr>		
 				<tr>
 					<td>Birrificio:</td>
-					<td><input type="text" th:field="*{birrificio}" /></td>
+					<td><input type="text" th:field="*{birrificio}" required/></td>
 					<span th:if="${#fields.hasErrors('birrificio')}" th:errors="*{birrificio}"></span>
 				</tr>
 				<tr>
 					<td>Colore:</td>
-					<td><input type="text" th:field="*{colore}" /></td>
+					<td><input type="text" th:field="*{colore}" required/></td>
 					<span th:if="${#fields.hasErrors('colore')}" th:errors="*{colore}"></span>
 				</tr>
 				<tr>
 					<td>Descrizione:</td>
-					<td><input type="text" th:field="*{descrizione}" /></td>
+					<td><input type="text" th:field="*{descrizione}" required/></td>
 					<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
 				</tr>
 				<tr>
 					<td>Dimensione (cl):</td>
-					<td><input type="text" th:field="*{dimensione}" /></td>
+					<td><input type="text" th:field="*{dimensione}" required/></td>
 					<span th:if="${#fields.hasErrors('dimensione')}" th:errors="*{dimensione}"></span>
 				</tr>
 				<tr>
 					<td>Prezzo (Euro):</td>
-					<td><input type="text" th:field="*{prezzo}" /></td>
+					<td><input type="text" th:field="*{prezzo}" required/></td>
+					<span th:if="${#fields.hasErrors('prezzo')}" th:errors="*{prezzo}"></span>
+				</tr>
+				<tr>
+					<td>immagine:</td>
+					<td><input type="file" name="image"  th:field="*{immagine}" accept="image/png, image/jpeg, image/jpg" required/></td>
 					<span th:if="${#fields.hasErrors('prezzo')}" th:errors="*{prezzo}"></span>
 				</tr>
 				<tr>

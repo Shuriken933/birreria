@@ -39,7 +39,7 @@ public class BirraController {
 	@GetMapping(value = "/birre")
 	public String getBirre(Model model) {
 		model.addAttribute("birre", this.birraService.tutte());
-		return "birre.html";
+		return "birre";
 	}
 	
 	@GetMapping({"/birra/{id}"})
