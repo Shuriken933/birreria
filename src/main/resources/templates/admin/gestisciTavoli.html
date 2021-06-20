@@ -2,66 +2,76 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head
-	th:replace="fragments/baseAdmin.html :: headerfiles(title='Homepage')"></head>
+	th:replace="fragments/base.html :: headerfiles(title='Homepage')"></head>
 
 <body>
 
 	<!-- Inizio MENU -->
 	<nav th:replace="fragments/base.html :: menu"></nav>
 	<!-- fine MENU -->
+	
 
-	<div class="">Tavoli: lista dei tavoli</div>
-	<div class="">
-		<a href="#">aggiungi tavolo</a>
-	</div>
-	<div>
+	<div class="container">
+		<h3 class="mb-2">1) inserimento</h3>
 		<!-- inizio FORM -->
-		<form th:action="@{/admin/tavolo}" method="POST" th:object="${tavolo}">
+		<form class="mb-3" th:action="@{/admin/tavolo}" method="POST" th:object="${tavolo}">
 			<div th:if="${#fields.hasGlobalErrors()}">
 				<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 			</div>
-			<div>
-				<div>
-					<span>Numero Tavolo:</span> <span><input type="text"
-						th:field="*{numeroTavolo}" /></span> <span
-						th:if="${#fields.hasErrors('numeroTavolo')}"
-						th:errors="*{numeroTavolo}"></span>
-				</div>
-				<div>
-					<span>Numero di Posti:</span> <span><input type="text"
-						th:field="*{numeroPosti}" /></span> <span
-						th:if="${#fields.hasErrors('numeroPosti')}"
-						th:errors="*{numeroPosti}"></span>
-				</div>
-				<div>
-					
-					 <label for="sala-select">Sala:</label> 
-					 <select class="form-control" th:field="*{sala}" id="sala-select" required>
-
-						<th:block th:each="singolaSala : ${sale}">
-							<option	th:text="${singolaSala.nome}" th:value=${singolaSala.id} />
-						</th:block> 
-
-					</select>
-				</div>
-				<div>
-					<span><button type="submit">Registra</button></span>
-				</div>
-			</div>
+			<table>
+				<tr>
+					<td>Numero Tavolo:</td> 
+					<td><input type="text" th:field="*{numeroTavolo}" /></td> 
+					<span th:if="${#fields.hasErrors('numeroTavolo')}" th:errors="*{numeroTavolo}"></span>
+				</tr>
+				<tr>
+					<td>Numero di Posti:</td> 
+					<td><input type="text" th:field="*{numeroPosti}" /></td> 
+					<span th:if="${#fields.hasErrors('numeroPosti')}" th:errors="*{numeroPosti}"></span>
+				</tr>
+				<tr>
+					<td>
+						<label for="sala-select">Sala:</label> 
+						 <select class="form-control" th:field="*{sala}" id="sala-select" required>
+							<th:block th:each="singolaSala : ${sale}">
+								<option	th:text="${singolaSala.nome}" th:value=${singolaSala.id} />
+							</th:block> 
+						</select>
+					</td>
+					 
+				</tr>
+				<tr>
+					<td><button type="submit">Registra</button></td>
+				</tr>
+			</table>
 		</form>
 		<!-- fine FORM -->
+		
+		<h3 class="mb-2">2) visualizzazione</h3>
+		<ul>
+			<li th:each="tavolo : ${tavoli}">
+			<p>
+				<span>numero tavolo: </span>
+				<span th:text="${tavolo.numeroTavolo}">numero tavolo:</span>
+			</p>
+			<p>
+				<span>numero posti: </span>
+				<span th:text="${tavolo.numeroPosti}">numero posti</span>
+				
+			</p>
+			<p>
+				<span><a href="">elimina</a></span>
+				<span><a href="">modifica</a></span>
+			</p>
+			</li>
+		</ul>
+		
 	</div>
 
 
-	<div class="">
-		<a href="#">modifica cameriere</a>
-	</div>
-	<div class="">
-		<a href="#">elimina tavolo</a>
-	</div>
 
 	<!-- inizio FOOTER -->
-	<footer th:replace="fragments/baseAdmin.html :: footer"></footer>
+	<footer th:replace="fragments/base.html :: footer"></footer>
 	<!-- fine FOOTER -->
 
 </body>

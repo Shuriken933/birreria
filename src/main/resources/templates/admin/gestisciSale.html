@@ -10,42 +10,35 @@
 	<!-- fine MENU -->
 	
 	
-	<div class="">
-		<div>aggiungi Sala</div>
+	<div class="container">
+		<h3 class="mb-1">1) aggiungi Sala</h3>
 
 		<!-- inizio FORM -->
-		<form th:action="@{/admin/sala}" method="POST" th:object="${sala}">
+		<form class="mb-3" th:action="@{/admin/sala}" method="POST" th:object="${sala}">
 			<div th:if="${#fields.hasGlobalErrors()}">
 				<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 			</div>
-			<div>
-				<div>
-					<span>Nome:</span> 
-					<span><input type="text" th:field="*{nome}" /></span> 
+			<table>
+				<tr>
+					<td>Nome:</td> 
+					<td><input type="text" th:field="*{nome}" /></td> 
 						<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
-				</div>
-				<div>
-					<span>Descrizione:</span>
-					<span><input type="text" th:field="*{descrizione}" /></span>
+				</tr>
+				<tr>
+					<td>Descrizione:</td>
+					<td><input type="text" th:field="*{descrizione}" /></td>
 					<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
-				</div>
-				<div>
-					<span><button type="submit">Registra</button></span>
-				</div>
-			</div>
+				</tr>
+				<tr>
+					<td><button type="submit">Registra</button></td>
+				</tr>
+			</table>
 		</form>
 		<!-- fine FORM -->
-
-	</div>
-	<div class="">
-		<a th:href="@{/}">modifica sala</a>
-	</div>
-<!-- 	<div class="">
-		<a th:href="@{'/sala/delete/' + ${sala.id}}">elimina sala</a>
-	</div>
-	 -->
-	2) VISUALIZZAZIONE
-	
+		
+		
+		
+		<h3>2) VISUALIZZAZIONE</h3>
 	<ul>
 		<li th:each="sala : ${sale}">
 		<p th:text="${sala.nome}">Sala1</p>
@@ -53,6 +46,14 @@
 		<a>Modifica</a>
 		</li>
 	</ul>
+
+	</div>
+	
+<!-- 	<div class="">
+		<a th:href="@{'/sala/delete/' + ${sala.id}}">elimina sala</a>
+	</div>
+	 -->
+	
 	
 
 	<!-- inizio FOOTER -->

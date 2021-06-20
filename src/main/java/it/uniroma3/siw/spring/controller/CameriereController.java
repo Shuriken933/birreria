@@ -46,7 +46,6 @@ public class CameriereController {
 	}
 	
 	
-	
 	@GetMapping(value = {"/camerieri"})
 	public String getCamerieri(Model model) {
 		model.addAttribute("camerieri", this.cameriereService.tutti());

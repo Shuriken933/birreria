@@ -11,9 +11,9 @@
 	
 	<div class="container">
 	
-		<h3 class="mb-2">1) aggiungi cameriere</h3>
+		<h3 class="mb-2">1) aggiungi</h3>
 		<!-- inizio FORM -->
-		<form th:action="@{/admin/cameriere}" method="POST" th:object="${cameriere}">
+		<form class="mb-3" th:action="@{/admin/cameriere}" method="POST" th:object="${cameriere}">
 			<div th:if="${#fields.hasGlobalErrors()}">
 				<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 			</div>
@@ -23,12 +23,12 @@
 					<td><input type="text" th:field="*{nome}" /></td> 
 						<td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></td>
 				</tr>
-				<div>
+				<tr>
 					<td>Cognome:</td>
 					 <td><input type="text" th:field="*{cognome}" /></td>
 						<span th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span>
 				</tr>
-				<div>
+				<tr>
 					<td>Età:</td>
 					<td><input type="text" th:field="*{eta}" /></td> 
 					<span th:if="${#fields.hasErrors('eta')}" th:errors="*{eta}"></span>
@@ -55,16 +55,18 @@
 		</form>
 		<!-- fine FORM -->
 		
-		<h3 class="mb-2"><a th:href="@{/}">modifica cameriere</a></h3>
-		<h3 class="mb-2"><a th:href="@{/}">elimina cameriere</a></h3>
 		
-		
-		<h3 class="mb-2">visualizzazione camerieri</h3>
+		<h3 class="mb-2">2) visualizzazione</h3>
 		<ul>
 			<li th:each="cameriere : ${camerieri}">
 			<p th:text="${cameriere.id}">id</p>
 			<p th:text="|${cameriere.nome} ${cameriere.nome}|">cameriere</p>
-			<a th:href="@{'/admin/delete/cameriere/' + ${cameriere.id}}">elimina cameriere</a>
+			<span>
+				<a th:href="@{'/admin/delete/cameriere/' + ${cameriere.id}}">elimina</a>
+				<a href="#">modifica</a>
+			
+			</span>
+			
 			</li>
 		</ul>
 		

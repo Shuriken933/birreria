@@ -66,7 +66,7 @@ public class AuthenticationController {
     	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
             return "admin/home";
         }else if(credentials.getRole().equals(Credentials.DEFAULT_ROLE)) {
-        	return "cameriere/home";
+        	return "redirect:/cameriere/gestisciOrdinazioni";
         }else {
         	return "index";
         }

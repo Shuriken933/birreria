@@ -11,13 +11,13 @@ import lombok.Data;
 @Entity
 public @Data class BirraOrdinata {
 	
-	/*@Id
+	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	private Integer quantità;
 	
-	@ManyToOne
+	/*@ManyToOne
 	private Birra birra;
 	
 	@ManyToOne

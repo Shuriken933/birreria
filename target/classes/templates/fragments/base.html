@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
 	<head th:fragment="headerfiles(title)">
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<link rel="stylesheet" th:href="@{/css/fonts.css}" >
-		<link rel="stylesheet" th:href="@{/css/style.css}" >
+		<link th:href="@{/css/fonts.css}" rel="stylesheet">
+		<link th:href="@{/css/style.css}" rel="stylesheet">
 		<title th:text="${title}"></title>
 	</head>
 	
@@ -30,7 +30,7 @@
 					<li class="p-1"><a th:href="@{/admin/gestisciBirre}">gestisci Birre</a></li>
 					<li class="p-1"><a th:href="@{/admin/gestisciSale}">gestisci Sale</a></li>
 					<hr>
-					<li class="p-1"><a th:href="@{/cameriere/home}">gestisci Ordinazioni</a></li>
+					<li class="p-1"><a th:href="@{/cameriere/gestisciOrdinazioni}">gestisci Ordinazioni</a></li>
 				</ul>
 				
 				<div sec:authorize="hasRole('ADMIN')">Questo contenuto è visto dall'amministratore</div>

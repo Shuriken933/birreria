@@ -1,5 +1,6 @@
 package it.uniroma3.siw.spring.model;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -21,7 +22,8 @@ public @Data class Ordinazione {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	private LocalTime orario;
+	/*private LocalTime orario;*/
+	private LocalDateTime orario;
 	
 	@ManyToOne
 	private Cameriere cameriere;
@@ -31,6 +33,8 @@ public @Data class Ordinazione {
 	
 	@ManyToMany(mappedBy = "ordinazioni")
 	private List<Birra> birre;
+	
+	private String nota;
 	
 	/*@OneToMany(mappedBy = "ordinazione", cascade = {CascadeType.REMOVE})
 	private List<BirraOrdinata> birreOrdinate;*/

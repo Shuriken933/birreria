@@ -1,8 +1,14 @@
 package it.uniroma3.siw.spring.controller;
 
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,16 +19,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.siw.spring.controller.validator.OrdinazioneValidator;
 import it.uniroma3.siw.spring.model.Birra;
+import it.uniroma3.siw.spring.model.Cameriere;
+import it.uniroma3.siw.spring.model.Credentials;
 import it.uniroma3.siw.spring.model.Ordinazione;
 import it.uniroma3.siw.spring.model.Tavolo;
 import it.uniroma3.siw.spring.service.BirraService;
+import it.uniroma3.siw.spring.service.CameriereService;
+import it.uniroma3.siw.spring.service.CredentialsService;
 import it.uniroma3.siw.spring.service.OrdinazioneService;
+import it.uniroma3.siw.spring.service.SalaService;
 import it.uniroma3.siw.spring.service.TavoloService;
+import it.uniroma3.siw.spring.service.UserService;
 
 @Controller
 public class OrdinazioneController {
 	
-	private List<Birra> ordinazioneProvvisoria;
+	/*private List<Birra> ordinazioneProvvisoria;
+	private Tavolo tavoloSelezionato;*/
+	
+	/*private Long idCameriereLoggato;*/
 	
 	@Autowired
 	private OrdinazioneService ordinazioneService;
@@ -31,53 +46,69 @@ public class OrdinazioneController {
 	private BirraService birraService;
 	
 	@Autowired
+	private SalaService salaService;
+	
+	@Autowired
 	private TavoloService tavoloService;
 	
 	@Autowired
 	private OrdinazioneValidator ordinazioneValidator;
 	
+	/*@Autowired
+	private CredentialsService credentialsService;
 	
-	/*il cameriere entra nella home*/
-	@GetMapping(value = {"/cameriere/home"})
-	public String getHome(Model model) {
-		model.addAttribute("tavoli", this.tavoloService.tutti());
-		/*model.addAttribute("birre", this.birraService.tutte());*/
-		return "cameriere/home";
-	}
-	
-	/*il cameriere seleziona un tavolo*/
-	@GetMapping("/cameriere/home/tavolo/{tavolo}")
-	public String getTavolo(@PathVariable("tavolo") Tavolo tavolo, Model model) {
-		
-		model.addAttribute("birre", this.birraService.tutte());
-		model.addAttribute("tavoloDiOrdinazione", tavolo);
-		return "cameriere/home/tavolo/gestisciOrdinazioni";
-	}
-	
-	/*il cameriere seleziona una birra*/
-	@PostMapping("/cameriere/home/tavolo/gestisciOrdinazioni")
-	public String getOrdinazione(@PathVariable("birra") Birra birra, Model model) {
-		ordinazioneProvvisoria.add(birra);
-		return "cameriere/home/tavolo/gestisciOrdinazioni";
-	}
-	
-	/*il cameriere conferma l'ordinazione*/
-	@PostMapping("/cameriere/home/tavolo/gestisciOrdinazioni/conferma")
-	public String getOrdinazione(@PathVariable("ordinazione") Ordinazione ordinazione, Model model) {
-		model.addAttribute("ordinazione", new Ordinazione());
-		this.ordinazioneService.inserisci(ordinazione);
-		return "cameriere/home";
-	}
+	@Autowired
+	private CameriereService cameriereService;*/
 	
 	
 	
+//	/*il cameriere entra nella home*/
+//	@GetMapping(value = {"/cameriere/home"})
+//	public String getHome(Model model) {
+//		model.addAttribute("tavoli", this.tavoloService.tutti());
+//		return "cameriere/home";
+//	}
+//	/*il cameriere seleziona un tavolo*/
+//	@GetMapping("/cameriere/home/tavolo/{tavolo}")
+//	public String getTavolo(@PathVariable("tavolo") Tavolo tavolo, Model model) {
+//		this.tavoloSelezionato = tavolo;
+//		model.addAttribute("birre", this.birraService.tutte());
+//		model.addAttribute("tavoloDiOrdinazione", tavolo);
+//		model.addAttribute("birra", new Birra());
+//		return "cameriere/gestisciOrdinazioni";
+//	}
+//	/*il cameriere seleziona una birra*/
+//	@PostMapping("/cameriere/gestisciOrdinazioni/add/birra")
+//	public String addBirraToOrdinazione(@ModelAttribute("birra") Birra birra, Model model) {
+//		ordinazioneProvvisoria.add(birra);
+//		model.addAttribute("ordinazioneProvvisoria", this.ordinazioneProvvisoria);
+//		return "cameriere/gestisciOrdinazioni";
+//	}
+//	/*il cameriere conferma l'ordinazione*/
+//	@PostMapping("/cameriere/home/tavolo/gestisciOrdinazioni/conferma")
+//	public String setOrdinazione(Model model) {
+//		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		Credentials credentials = credentialsService.getId(userDetails.getUsername()); //id cameriere
+//		Cameriere cameriereLoggato = cameriereService.camerierePerId(credentials.getId());
+//		/*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss a");*/
+//		LocalDateTime now = LocalDateTime.now();
+//		/*String dateTimeString = now.format(formatter);*/
+//		Ordinazione ordinazione = new Ordinazione();
+//		ordinazione.setCameriere(cameriereLoggato);
+//		ordinazione.setBirre(ordinazioneProvvisoria);
+//		ordinazione.setOrario(now);
+//		ordinazione.setTavolo(tavoloSelezionato);
+//		this.ordinazioneService.inserisci(ordinazione);
+//		return "cameriere/home";
+//	}
 	
 	
-	
-	/*@GetMapping(value = "/cameriere/gestisciOrdinazioni")
+
+	@GetMapping(value = "/cameriere/gestisciOrdinazioni")
 	public String getGestisciOrdinazioni(Model model) {
 		model.addAttribute("tavoli", this.tavoloService.tutti());
 		model.addAttribute("sale", this.salaService.tutte());
+		model.addAttribute("birre", this.birraService.tutte());
 		model.addAttribute("ordinazione", new Ordinazione());
 		return "cameriere/gestisciOrdinazioni";
 	}
@@ -103,6 +134,6 @@ public class OrdinazioneController {
             return "redirect:/cameriere/gestisciOrdinazioni";
         }
         return "cameriere/gestisciOrdinazioni";
-    }*/
+    }
 
 }

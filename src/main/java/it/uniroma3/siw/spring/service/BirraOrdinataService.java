@@ -14,12 +14,12 @@ import it.uniroma3.siw.spring.repository.BirraOrdinataRepository;
 @Service
 public class BirraOrdinataService {
 	
-	@Autowired
+	/*@Autowired
 	private BirraOrdinataRepository birraOrdinataRepository;
 	
 	@Transactional
 	public List<BirraOrdinata> tutte(Ordinazione ordinazione){
 		return (List<BirraOrdinata>) birraOrdinataRepository.findByOrdinazione(ordinazione);
-	}
+	}*/
 
 }

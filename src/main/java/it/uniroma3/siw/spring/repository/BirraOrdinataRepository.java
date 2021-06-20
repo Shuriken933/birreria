@@ -9,6 +9,6 @@ import it.uniroma3.siw.spring.model.Ordinazione;
 
 public interface BirraOrdinataRepository extends CrudRepository<BirraOrdinata, Long> {
 	
-	public List<BirraOrdinata> findByOrdinazione(Ordinazione ordinazione);
+	/*public List<BirraOrdinata> findByOrdinazione(Ordinazione ordinazione);*/
 
 }

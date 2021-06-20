@@ -20,6 +20,7 @@ body {
   background-color: var(--color-1);
   margin-top: 120px;
   font-family: 'Poppins', sans-serif;
+  font-weight: regular;
 }
 
 
@@ -150,6 +151,7 @@ ul.dropdown-menu{
   margin-left: -25px;
   border-radius: 25px;
   z-index: 20;
+  background: #fff;
 }
 ul.primary ul.dropdown-menu li a{ border: none; border-radius: 0px;}
 ul.primary li a {padding: 22px 14px 22px 14px;border-radius: 20px;}

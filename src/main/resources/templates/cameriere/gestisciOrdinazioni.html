@@ -1,48 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/baseAdmin.html :: headerfiles(title='Homepage')"></head>
+<head th:replace="fragments/base.html :: headerfiles(title='Homepage')"></head>
 
 <body>
 
 	<!-- Inizio MENU -->
-	<nav th:replace="fragments/baseAdmin.html :: menu"></nav>
+	<nav th:replace="fragments/base.html :: menu"></nav>
 	<!-- fine MENU -->
 	
 	<div class="container">
 	
-	<h3 class="mb-2">fai un'ordinazione</h3>
-		<form th:action="@{/cameriere/ordinazione}" method="POST" th:object="${ordinazione}">
+		<h3 class="mb-2">aggiungi birre all'ordinazione</h3>
 		
-			<div th:if="${#fields.hasGlobalErrors()}">
-	  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
-			</div>	
-		 
+		<form action="#" th:action="@{/cameriere/ordinazione}" th:object="${ordinazione}" method="post">
+			<table>
+				<tr>
+					<td>
+						<label>Scelta</label>
+					</td>
+					<td>
+						<select multiple th:field="*{birre}" required>	 
+							<th:block th:each="singolaBirra : ${birre}">
+								<option th:text="${singolaBirra.nome}" th:value=${singolaBirra.id} />
+							</th:block>		
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td><label>nota</label></td>
+					<td><input type="text" placeholder="nota" th:field="*{nota}"> </td>
+				</tr>
 				
-			<div th:each="birra : {birre}">
-			
-				<input type="number" class="form-control" id="quantityInput" placeholder="0" th:field="${birraOrdinata.birra}">
-				<label for="quantityInput">quantità</label>
-			
-				<input type="number" class="form-control" id="quantityInput" placeholder="0" th:field="${birraOrdinata.quantità}">
-				<label for="quantityInput">quantità</label>
-				
-			</div>
-			
+
+			</table>
+			<button type="submit">Conferma</button>
 		</form>
+		
+		
+			 
+		
 	
 	</div>
 
-	
-	
-	
-		
-		
-		
-		
+
 
 	<!-- inizio FOOTER -->
-	<footer th:replace="fragments/baseAdmin.html :: footer"></footer>
+	<footer th:replace="fragments/base.html :: footer"></footer>
 	<!-- fine FOOTER -->
 
 </body>

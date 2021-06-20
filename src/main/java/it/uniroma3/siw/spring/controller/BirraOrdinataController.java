@@ -11,7 +11,7 @@ import it.uniroma3.siw.spring.service.BirraService;
 @Controller
 public class BirraOrdinataController {
 	
-	@Autowired
+	/*@Autowired
 	private BirraOrdinataService birraOrdinataService;
 	
 	@Autowired
@@ -23,6 +23,6 @@ public class BirraOrdinataController {
 		//model.addAttribute("birre", this.birraOrdinataService.tutte());
 		model.addAttribute("birre", this.birraService.tutte());
 		return "cameriere/gestisciOrdinazioni";
-	}
+	}*/
 
 }
