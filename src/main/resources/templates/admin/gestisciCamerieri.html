@@ -57,17 +57,30 @@
 		
 		
 		<h3 class="mb-2">2) visualizzazione</h3>
-		<ul>
-			<li th:each="cameriere : ${camerieri}">
-			<p>Numero Id: <span th:text="${cameriere.id}">id</span></p> 
-			<p th:text="|${cameriere.nome} ${cameriere.cognome}|">cameriere</p>
-			<span>
-				<a th:href="@{'/admin/delete/cameriere/' + ${cameriere.id}}">elimina</a>
-			
-			</span>
-			
-			</li>
-		</ul>
+		
+		<table class="bordered mb-2">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>nome cognome</th>
+					<th>eta</th>
+					<th>assunzione</th>
+					<th>durata contratto</th>
+					<th>telefono</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="cameriere : ${camerieri}">
+					<td th:text="|${cameriere.nome} ${cameriere.cognome}|">numero</td>
+					<td th:text="${cameriere.eta}">numero</td>
+					<td th:text="${cameriere.assunzione}">numero</td>
+					<td th:text="${cameriere.durataContratto}">numero</td>
+					<td th:text="${cameriere.numeroDiTelefono}">numero</td>
+					<td><a th:href="@{'/admin/delete/cameriere/' + ${cameriere.id}}">Elimina</a></td>
+				</tr>
+			</tbody>
+		</table>
+		
 		
 		
 	</div>

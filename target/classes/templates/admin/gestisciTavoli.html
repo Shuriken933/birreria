@@ -48,23 +48,27 @@
 		<!-- fine FORM -->
 		
 		<h3 class="mb-2">2) visualizzazione</h3>
-		<ul>
-			<li th:each="tavolo : ${tavoli}">
-			<p>
-				<span>numero tavolo: </span>
-				<span th:text="${tavolo.numeroTavolo}">numero tavolo:</span>
-			</p>
-			<p>
-				<span>numero posti: </span>
-				<span th:text="${tavolo.numeroPosti}">numero posti</span>
-				
-			</p>
-			<p th:text="${tavolo.sala.nome}">sala</p>
-			<p>
-				<span><a th:href="@{'/tavolo/delete/' + ${tavolo.id}}">elimina</a></span>
-			</p>
-			</li>
-		</ul>
+		
+		<table class="bordered mb-2">
+			<thead>
+				<tr>
+					<th>n°tavolo</th>
+					<th>n°posti</th>
+					<th>sala</th>
+					<th>azioni</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="tavolo : ${tavoli}">
+					<td th:text="${tavolo.numeroTavolo}">numero</td>
+					<td th:text="${tavolo.numeroPosti}">numero</td>
+					<td th:text="${tavolo.sala.nome}">numero</td>
+					<td><a th:href="@{'/tavolo/delete/' + ${tavolo.id}}">Elimina</a></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		
 		
 	</div>
 

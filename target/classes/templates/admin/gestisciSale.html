@@ -38,13 +38,24 @@
 		
 		
 		
-		<h3>2) VISUALIZZAZIONE</h3>
-	<ul>
-		<li th:each="sala : ${sale}">
-		<p th:text="${sala.nome}">Sala1</p>
-		<a th:href="@{'/sala/delete/' + ${sala.id}}">Elimina</a>
-		</li>
-	</ul>
+		<h3 class="mb-1">2) VISUALIZZAZIONE</h3>
+		<table class="bordered mb-2">
+			<thead>
+				<tr>
+					<th>nome</th>
+					<th>descrizione</th>
+					<th>azione</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="sala : ${sale}">
+					<td th:text="${sala.nome}">nome</td>
+					<td th:text="${sala.descrizione}">nome</td>
+					<td><a th:href="@{'/sala/delete/' + ${sala.id}}">Elimina</a></td>
+				</tr>
+			</tbody>
+		</table>
+
 
 	</div>
 	

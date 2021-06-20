@@ -17,14 +17,31 @@
 		<hr class="mb-2">
 		
 		<h3 class="mb-2">visualizzazione birre</h3>
-		<ul>
-			<li th:each="birra : ${birre}">
-			<img alt="birra" th:alt="${birra.nome}" th:src="@{'/img/' + ${birra.immagine}}">
-			<p th:text="${birra.nome}">Birra1</p>
-			<p th:text="${birra.birrificio}">BdB</p>
-			<a th:href="@{'/admin/delete/birra/' + ${birra.id}}">elimina</a>
-			</li>
-		</ul>
+		
+		<table class="bordered mb-2">
+			<thead>
+				<tr>
+					<th>nome</th>
+					<th>immagine</th>
+					<th>birrificio</th>
+					<th>descrizione</th>
+					<th>azione</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="birra : ${birre}">
+					<td th:text="${birra.nome}">nome</td>
+					<td>
+						<img alt="artista" th:alt="${birra.nome}" th:src="@{'/img/' + ${birra.immagine}}">
+					</td>
+					<td th:text="${birra.birrificio}">birrificio</td>
+					<td th:text="${birra.descrizione}">descrizione</td>
+					<td><a th:href="@{'/admin/delete/birra/' + ${birra.id}}">Elimina</a></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		
 		
 	</div>
 	
