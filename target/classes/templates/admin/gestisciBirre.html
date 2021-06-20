@@ -22,7 +22,7 @@
 			<img alt="birra" th:alt="${birra.nome}" th:src="@{'/img/' + ${birra.immagine}}">
 			<p th:text="${birra.nome}">Birra1</p>
 			<p th:text="${birra.birrificio}">BdB</p>
-			<a th:href="@{'/admin/delete/birra/' + ${birra.id}}">elimina birra</a>
+			<a th:href="@{'/admin/delete/birra/' + ${birra.id}}">elimina</a>
 			</li>
 		</ul>
 		

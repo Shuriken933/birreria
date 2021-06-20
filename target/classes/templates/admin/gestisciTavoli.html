@@ -61,8 +61,7 @@
 			</p>
 			<p th:text="${tavolo.sala.nome}">sala</p>
 			<p>
-				<span><a href="">elimina</a></span>
-				<span><a href="">modifica</a></span>
+				<span><a th:href="@{'/tavolo/delete/' + ${tavolo.id}}">elimina</a></span>
 			</p>
 			</li>
 		</ul>

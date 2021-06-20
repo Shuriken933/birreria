@@ -43,7 +43,6 @@
 		<li th:each="sala : ${sale}">
 		<p th:text="${sala.nome}">Sala1</p>
 		<a th:href="@{'/sala/delete/' + ${sala.id}}">Elimina</a>
-		<a>Modifica</a>
 		</li>
 	</ul>
 
