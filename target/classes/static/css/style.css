@@ -169,6 +169,16 @@ button:hover{
   transform: scale(1.1);
 }
 
+select{
+  border-radius: 10px;
+  height: 40px;
+  border: none;
+  background: #363676;
+  padding: 0 10px;
+  color: #fff;
+}
+
+
 
 /* ! ------------------ */
 /* ! SECTIONS */
@@ -279,7 +289,7 @@ footer ul li{display: inline-block;}
   background: linear-gradient(45deg, #F59C58, #808080);
   border-radius: 100%;
 }
-.personale img{
+.personale img.cameriere{
   margin-top: 3px;
   margin-left: 0px;
   width: 60px;
@@ -289,7 +299,7 @@ footer ul li{display: inline-block;}
   transform: scale(1);
   transition: transform 0.5s cubic-bezier(.215,.61,.355,1);
 }
-.personale img:hover{
+.personale img.cameriere:hover{
   transform: scale(1.2);
 }
 .personale img.button--add{
@@ -333,7 +343,7 @@ footer ul li{display: inline-block;}
 /* ! - panel-birra */
 .panel-birra{
   width: 180px;
-  height: 220px;
+  /*height: 220px;*/
   background: linear-gradient(45deg, #1B1C54, #373778);
   border-radius: 30px;
   margin-right: 1rem;
@@ -359,7 +369,7 @@ footer ul li{display: inline-block;}
 }
 .panel-birra p{
   float: right;
-  margin-top: -20px;
+  /*margin-top: -20px;*/
 }
 
 /* ! - panel-background */

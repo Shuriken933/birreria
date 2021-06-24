@@ -74,12 +74,25 @@
 						<td th:text="${cameriere.durataContratto}">0</td>
 					</tr>
 					
+					<tr>
+						<td>
+							<span class="mr-2">
+								<a th:href="@{'/admin/delete/cameriere/' + ${cameriere.id}}"><img class="button--delete" width="30" height="30" alt="delete birra" th:src="@{/img/icons/delete.png}"></a>
+							</span>
+							
+							<span>
+								<a class="button-modal-edit--cameriere" href="#">
+								<img class="button--edit" width="30" height="30" alt="add tavolo" th:src="@{/img/icons/edit.png}">
+							</a>
+							</span>
+							
+						</td>
+						
+					</tr>
+
 				</table>
 				</div>
-			
-			
-			
-			
+
 			
 		</div>
 		<!-- fine PERSONALE -->
@@ -90,6 +103,11 @@
 		<!-- inizio FOOTER -->
 		<footer th:replace="fragments/base.html :: footer"></footer>
 		<!-- fine FOOTER -->
+		
+		
+		<!-- inizio MODAL--register-cameriere -->
+		<div th:replace="fragments/base.html :: modal--edit-cameriere"></div>
+		<!-- fine MODAL--register-cameriere -->
 		
 
 	</div>

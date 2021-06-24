@@ -69,16 +69,16 @@ public class CameriereController {
 		return "admin/cameriereForm";
 	}
 	
-	@PostMapping(value = {"/admin/modifica/cameriere"})
+	@PostMapping(value = {"/admin/edit/cameriere"})
 	public String modifyCameriere(@ModelAttribute("cameriere") Cameriere cameriere, Model model, BindingResult bindingResult) {
 		this.cameriereService.modificaCameriere(cameriere);
-		return "redirect:/admin/gestisciCamerieri";
+		return "redirect:/admin/dashboard";
 	}
 
 	@GetMapping("/admin/delete/cameriere/{id}")
 	public String rimuoviCameriere(@PathVariable("id") Long id, Model model) {
 		this.cameriereService.rimuoviCameriere(id);
-		return "redirect:/admin/gestisciCamerieri"; 
+		return "redirect:/admin/dashboard"; 
 	}
 
 }

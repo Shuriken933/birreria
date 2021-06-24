@@ -44,30 +44,32 @@
 
 	<nav class="menu p-3" th:fragment="menu">
 		<div class="text-center mb-5 mt-2">
-			<img th:src="@{/img/restaurant.png}" alt="logo" width="50" height="50">
+			<img th:src="@{/img/restaurant.png}" alt="logo" width="50"
+				height="50">
 			<p>nome del sito</p>
 		</div>
 
 		<ul class="mb-5">
-			
-			<li>
-				<img alt="" src="img/icons/home.png" th:src="@{/img/icons/home.png}">
-				<a class="mb-2" href="#" th:href="@{/index}">home</a>
-			</li>
-			<li sec:authorize="isAuthenticated()"> 
-				<img alt="" src="img/icons/dashboard.png" th:src="@{/img/icons/dashboard.png}"> 
-				<a href="#" th:href="@{/admin/dashboard}">dashboard</a>
-			</li>
-			<li sec:authorize="isAnonymous()" class="mb-1"><a href="#">chi siamo</a></li>
-			<li sec:authorize="isAnonymous()" class="mb-1"><a href="#">info</a></li>
+
+			<li><img alt="" src="img/icons/home.png"
+				th:src="@{/img/icons/home.png}"> <a class="mb-2" href="#"
+				th:href="@{/index}">home</a></li>
+			<li sec:authorize="isAuthenticated()"><img alt=""
+				src="img/icons/dashboard.png" th:src="@{/img/icons/dashboard.png}">
+				<a href="#" th:href="@{/admin/dashboard}">dashboard</a></li>
+			<li sec:authorize="isAnonymous()" class="mb-1 opacity-50"><a href="#">chi
+					siamo</a></li>
+			<li sec:authorize="isAnonymous()" class="mb-1 opacity-50"><a href="#">info</a></li>
 			<hr class="mt-3 mb-3">
-			<li sec:authorize="isAnonymous()" class="mb-1"><a class="button-modal-login" href="#">login</a></li>
-			<li sec:authorize="isAuthenticated()">
-				<img alt="" src="img/icons/logout.png" th:src="@{/img/icons/logout.png}">
-				<a href="#" th:href="@{/logout}">logout</a>
-			</li>
-			<li sec:authorize="isAnonymous()" class="opacity-40"><a class="button-modal-register--admin" href="#">registrazione</a></li>
-			<li sec:authorize="isAuthenticated()" class="opacity-40"><a class="button-modal-register--cameriere" href="#">registrazione</a></li>
+			<li sec:authorize="isAnonymous()" class="mb-1"><a
+				class="button-modal-login" href="#">login</a></li>
+			<li sec:authorize="isAuthenticated()"><img alt=""
+				src="img/icons/logout.png" th:src="@{/img/icons/logout.png}">
+				<a href="#" th:href="@{/logout}">logout</a></li>
+			<li sec:authorize="isAnonymous()" class="opacity-40"><a
+				class="button-modal-register--admin" href="#">registrazione</a></li>
+			<li sec:authorize="isAuthenticated()" class="opacity-40"><a
+				class="button-modal-register--cameriere" href="#">registrazione</a></li>
 		</ul>
 	</nav>
 	<!-- fine MENU -->
@@ -82,244 +84,361 @@
 		</ul>
 	</footer>
 	<!-- fine FOOTER -->
-	
+
 	<!-- inizio MODAL--login -->
-		<div th:fragment="modal--login" class="modal modal_login">
-			<div class="modal__form panel-background p-3">
-				<h3 class="mb-2">login</h3>
-				<form class="" th:action="@{/login}" method="post">
-					<p>username</p>
-					<input class="mb-2" name="username" type="text" required>
-					<p>password</p>
-					<input name="password" type="password" required>
-					<hr class="mt-2 mb-2">
-					<button type="submit">Login</button>
-					<a class="chiudi ml-2" href="#">chiudi</a>
-				</form>
-			</div>
+	<div th:fragment="modal--login" class="modal modal_login">
+		<div class="modal__form panel-background p-3">
+			<h3 class="mb-2">login</h3>
+			<form class="" th:action="@{/login}" method="post">
+				<p>username</p>
+				<input class="mb-2" name="username" type="text" required>
+				<p>password</p>
+				<input name="password" type="password" required>
+				<hr class="mt-2 mb-2">
+				<button type="submit">Login</button>
+				<a class="chiudi ml-2" href="#">chiudi</a>
+			</form>
 		</div>
-		<!-- fine MODAL--login -->
-		
-		<!-- inizio MODAL--register-cameriere -->
-		<div th:fragment="modal--register-cameriere" class="modal modal_register--cameriere">
-			<div class="modal__form panel-background p-3">
-				<h3 class="mb-2">registrazione di un cameriere</h3>
-				<form th:action="@{/admin/registraCameriere}" method="POST">
-			    <table>
-			        <tr>
-			            <td class="p-1">Nome</td>
-			            <td><input type="text" placeholder="nome" th:field="${cameriere.nome}" required></td>
-			            <td th:if="${#fields.hasErrors('cameriere.nome')}" th:errors="${cameriere.nome}" th:style="'color:red'"></td>
-			        </tr>
-			        <tr>
-			            <td class="p-1">Cognome</td>
-			            <td><input type="text" placeholder="cognome" th:field="${cameriere.cognome}" required></td>
-			            <td th:if="${#fields.hasErrors('cameriere.cognome')}" th:errors="${cameriere.cognome}" th:style="'color:red'"></td>
-			        </tr>
-			        <tr>
-			            <td class="p-1">Età</td>
-			            <td><input type="number" placeholder="eta" th:field="${cameriere.eta}" required></td>
-			            <td th:if="${#fields.hasErrors('cameriere.eta')}" th:errors="${cameriere.eta}" th:style="'color:red'"></td>
-			        </tr>
-			        <tr>
-			            <td class="p-1">Data assunzione</td>
-			            <td><input type="date" placeholder="yyyy/mm/dd" th:field="${cameriere.assunzione}" required></td>
-			            <td th:if="${#fields.hasErrors('cameriere.assunzione')}" th:errors="${cameriere.assunzione}" th:style="'color:red'"></td>
-			        </tr>
-			        <tr>
-			            <td class="p-1">Durata del contratto (mesi)</td>
-			            <td><input type="number" placeholder="5" th:field="${cameriere.durataContratto}" required></td>
-			            <td th:if="${#fields.hasErrors('cameriere.durataContratto')}" th:errors="${cameriere.durataContratto}" th:style="'color:red'"></td>
-			        </tr>
-			        <tr>
-			            <td class="p-1">Telefono)</td>
-			            <td><input type="number" placeholder="000000" th:field="${cameriere.numeroDiTelefono}" required></td>
-			            <td th:if="${#fields.hasErrors('cameriere.numeroDiTelefono')}" th:errors="${cameriere.numeroDiTelefono}" th:style="'color:red'"></td>
-			        </tr>
-			        <tr>
-			        	<td class="p-1">Immagine</td>
-			        	<td><input type="file" class="form-control mb-2" name="image" id="imageInput" placeholder="immagine" th:field="${cameriere.immagine}" accept="image/png, image/jpeg, image/jpg" required></td>
-				        <td th:if="${#fields.hasErrors('cameriere.immagine')}" th:errors="${cameriere.immagine}" th:style="'color:red'"></td>
-			        </tr>
-			        <tr>
-			            <td><button type="submit">Registra</button></td>
-			            <td><a class="chiudi ml-2" href="#">chiudi</a></td>
-			        </tr>
-			    </table>
-				</form>
-			</div>
+	</div>
+	<!-- fine MODAL--login -->
+
+	<!-- inizio MODAL--register-cameriere -->
+	<div th:fragment="modal--register-cameriere"
+		class="modal modal_register--cameriere">
+		<div class="modal__form panel-background p-3">
+			<h3 class="mb-2">registrazione di un cameriere</h3>
+			<form th:action="@{/admin/registraCameriere}" method="POST">
+				<table>
+					<tr>
+						<td class="p-1">Nome</td>
+						<td><input type="text" placeholder="nome"
+							th:field="${cameriere.nome}" required></td>
+						<td th:if="${#fields.hasErrors('cameriere.nome')}"
+							th:errors="${cameriere.nome}" th:style="'color:red'"></td>
+					</tr>
+					<tr>
+						<td class="p-1">Cognome</td>
+						<td><input type="text" placeholder="cognome"
+							th:field="${cameriere.cognome}" required></td>
+						<td th:if="${#fields.hasErrors('cameriere.cognome')}"
+							th:errors="${cameriere.cognome}" th:style="'color:red'"></td>
+					</tr>
+					<tr>
+						<td class="p-1">Età</td>
+						<td><input type="number" placeholder="eta"
+							th:field="${cameriere.eta}" required></td>
+						<td th:if="${#fields.hasErrors('cameriere.eta')}"
+							th:errors="${cameriere.eta}" th:style="'color:red'"></td>
+					</tr>
+					<tr>
+						<td class="p-1">Data assunzione</td>
+						<td><input type="date" placeholder="yyyy/mm/dd"
+							th:field="${cameriere.assunzione}" required></td>
+						<td th:if="${#fields.hasErrors('cameriere.assunzione')}"
+							th:errors="${cameriere.assunzione}" th:style="'color:red'"></td>
+					</tr>
+					<tr>
+						<td class="p-1">Durata del contratto (mesi)</td>
+						<td><input type="number" placeholder="5"
+							th:field="${cameriere.durataContratto}" required></td>
+						<td th:if="${#fields.hasErrors('cameriere.durataContratto')}"
+							th:errors="${cameriere.durataContratto}" th:style="'color:red'"></td>
+					</tr>
+					<tr>
+						<td class="p-1">Telefono)</td>
+						<td><input type="number" placeholder="000000"
+							th:field="${cameriere.numeroDiTelefono}" required></td>
+						<td th:if="${#fields.hasErrors('cameriere.numeroDiTelefono')}"
+							th:errors="${cameriere.numeroDiTelefono}" th:style="'color:red'"></td>
+					</tr>
+					<tr>
+						<td class="p-1">Immagine</td>
+						<td><input type="file" class="form-control mb-2" name="image"
+							id="imageInput" placeholder="immagine"
+							th:field="${cameriere.immagine}"
+							accept="image/png, image/jpeg, image/jpg" required></td>
+						<td th:if="${#fields.hasErrors('cameriere.immagine')}"
+							th:errors="${cameriere.immagine}" th:style="'color:red'"></td>
+					</tr>
+					<tr>
+						<td><button type="submit">Registra</button></td>
+						<td><a class="chiudi ml-2" href="#">chiudi</a></td>
+					</tr>
+				</table>
+			</form>
 		</div>
-		<!-- fine MODAL--register-cameriere -->
-		
-		
-		<!-- inizio MODAL--register-admin -->
-		<div th:fragment="modal--register-admin" class="modal modal_register--admin">
-			<div class="modal__form panel-background p-3">
-				<h3 class="mb-2">registrazione dell'admin</h3>
-				<form th:action="@{/register}" method="POST">
-			    <table>
-			        <tr>
-			            <td class="p-1">Username</td>
-			            <td><input type="text" placeholder="username" th:field="${credentials.username}" required></td>
-			            <td th:if="${#fields.hasErrors('credentials.username')}" th:errors="${credentials.username}" th:style="'color:red'"></td>
-			        </tr>
-			        <tr>
-			            <td class="p-1">Password</td>
-			            <td><input type="password" placeholder="password" th:field="${credentials.password}" required></td>
-			            <td th:if="${#fields.hasErrors('credentials.password')}" th:errors="${credentials.password}" th:style="'color:red'"></td>
-			        </tr>
-			        <tr>
-			            <td class="p-1">Nome</td>
-			            <td><input type="text" placeholder="nome" th:field="${user.nome}" required></td>
-			            <td th:if="${#fields.hasErrors('user.nome')}" th:errors="${user.nome}" th:style="'color:red'"></td>
-			        </tr>
-			        <tr>
-			            <td class="p-1">Cognome</td>
-			            <td><input type="text" placeholder="cognome" th:field="${user.cognome}" required></td>
-			            <td th:if="${#fields.hasErrors('user.cognome')}" th:errors="${user.cognome}" th:style="'color:red'"></td>
-			        </tr>
-			        <tr>
-			            <td><button type="submit">Registra</button></td>
-			            <td><a class="chiudi ml-2" href="#">chiudi</a></td>
-			        </tr>
-			    </table>
-				</form>
-			</div>
+	</div>
+	<!-- fine MODAL--register-cameriere -->
+
+	<!-- inizio MODAL--edit-cameriere -->
+	<div th:fragment="modal--edit-cameriere"
+		class="modal modal_edit--cameriere">
+		<div class="modal__form panel-background p-3">
+			<h3 class="mb-2">registrazione di un cameriere</h3>
+			<form th:action="@{/admin/edit/cameriere}" method="POST">
+				<table>
+					<tr>
+						<td class="p-1">Id</td>
+						<td><input type="number" th:placeholder="${cameriere.id}"
+							th:field="${cameriere.id}" required></td>
+					</tr>
+					<tr>
+						<td class="p-1">Nome</td>
+						<td><input type="text" th:placeholder="${cameriere.nome}"
+							th:field="${cameriere.nome}" required></td>
+						<td th:if="${#fields.hasErrors('cameriere.nome')}"
+							th:errors="${cameriere.nome}" th:style="'color:red'"></td>
+					</tr>
+					<tr>
+						<td class="p-1">Cognome</td>
+						<td><input type="text" th:placeholder="${cameriere.cognome}"
+							th:field="${cameriere.cognome}" required></td>
+						<td th:if="${#fields.hasErrors('cameriere.cognome')}"
+							th:errors="${cameriere.cognome}" th:style="'color:red'"></td>
+					</tr>
+					<tr>
+						<td class="p-1">Età</td>
+						<td><input type="number" th:placeholder="${cameriere.eta}"
+							th:field="${cameriere.eta}" required></td>
+						<td th:if="${#fields.hasErrors('cameriere.eta')}"
+							th:errors="${cameriere.eta}" th:style="'color:red'"></td>
+					</tr>
+					<tr>
+						<td class="p-1">Data assunzione</td>
+						<td><input type="date"
+							th:placeholder="${cameriere.assunzione}"
+							th:field="${cameriere.assunzione}" required></td>
+						<td th:if="${#fields.hasErrors('cameriere.assunzione')}"
+							th:errors="${cameriere.assunzione}" th:style="'color:red'"></td>
+					</tr>
+					<tr>
+						<td class="p-1">Durata del contratto (mesi)</td>
+						<td><input type="number"
+							th:placeholder="${cameriere.durataContratto}"
+							th:field="${cameriere.durataContratto}" required></td>
+						<td th:if="${#fields.hasErrors('cameriere.durataContratto')}"
+							th:errors="${cameriere.durataContratto}" th:style="'color:red'"></td>
+					</tr>
+					<tr>
+						<td class="p-1">Telefono)</td>
+						<td><input type="number"
+							th:placeholder="${cameriere.numeroDiTelefono}"
+							th:field="${cameriere.numeroDiTelefono}" required></td>
+						<td th:if="${#fields.hasErrors('cameriere.numeroDiTelefono')}"
+							th:errors="${cameriere.numeroDiTelefono}" th:style="'color:red'"></td>
+					</tr>
+					<tr>
+						<td class="p-1">Immagine</td>
+						<td><input type="file" class="form-control mb-2" name="image"
+							id="imageInput" th:placeholder="${cameriere.immagine}"
+							th:field="${cameriere.immagine}"
+							accept="image/png, image/jpeg, image/jpg" required></td>
+						<td th:if="${#fields.hasErrors('cameriere.immagine')}"
+							th:errors="${cameriere.immagine}" th:style="'color:red'"></td>
+					</tr>
+					<tr>
+						<td><button type="submit">Registra</button></td>
+						<td><a class="chiudi ml-2" href="#">chiudi</a></td>
+					</tr>
+				</table>
+			</form>
 		</div>
-		<!-- fine MODAL--register-admin -->
-		
-		
-		<!-- inizio MODAL--register-sala -->
-		<div th:fragment="modal--register-sala" class="modal modal_register--sala">
-			<div class="modal__form panel-background p-3">
-				<h3 class="mb-2">registrazione sala</h3>
-				<!-- inizio FORM -->
-				<form class="mb-3" th:action="@{/admin/sala}" method="POST" th:object="${sala}">
-					<div th:if="${#fields.hasGlobalErrors()}">
-						<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
-					</div>
-					<table>
-						<tr>
-							<td>Nome:</td> 
-							<td><input type="text" th:field="*{nome}" required/></td> 
-								<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
-						</tr>
-						<tr>
-							<td>Descrizione:</td>
-							<td><input class="mb-2" type="text" th:field="*{descrizione}" required/></td>
-							<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
-						</tr>
-						<tr>
-							<td><button type="submit">Registra</button></td>
-			        <td><a class="chiudi ml-2" href="#">chiudi</a></td>
-						</tr>
-					</table>
-				</form>
-			</div>
+	</div>
+	<!-- fine MODAL--edit-cameriere -->
+
+
+	<!-- inizio MODAL--register-admin -->
+	<div th:fragment="modal--register-admin"
+		class="modal modal_register--admin">
+		<div class="modal__form panel-background p-3">
+			<h3 class="mb-2">registrazione dell'admin</h3>
+			<form th:action="@{/register}" method="POST">
+				<table>
+					<tr>
+						<td class="p-1">Username</td>
+						<td><input type="text" placeholder="username"
+							th:field="${credentials.username}" required></td>
+						<td th:if="${#fields.hasErrors('credentials.username')}"
+							th:errors="${credentials.username}" th:style="'color:red'"></td>
+					</tr>
+					<tr>
+						<td class="p-1">Password</td>
+						<td><input type="password" placeholder="password"
+							th:field="${credentials.password}" required></td>
+						<td th:if="${#fields.hasErrors('credentials.password')}"
+							th:errors="${credentials.password}" th:style="'color:red'"></td>
+					</tr>
+					<tr>
+						<td class="p-1">Nome</td>
+						<td><input type="text" placeholder="nome"
+							th:field="${user.nome}" required></td>
+						<td th:if="${#fields.hasErrors('user.nome')}"
+							th:errors="${user.nome}" th:style="'color:red'"></td>
+					</tr>
+					<tr>
+						<td class="p-1">Cognome</td>
+						<td><input type="text" placeholder="cognome"
+							th:field="${user.cognome}" required></td>
+						<td th:if="${#fields.hasErrors('user.cognome')}"
+							th:errors="${user.cognome}" th:style="'color:red'"></td>
+					</tr>
+					<tr>
+						<td><button type="submit">Registra</button></td>
+						<td><a class="chiudi ml-2" href="#">chiudi</a></td>
+					</tr>
+				</table>
+			</form>
 		</div>
-		<!-- fine MODAL--register-sala -->
-		
-		
-		<!-- inizio MODAL--register-tavolo -->
-		<div th:fragment="modal--register-tavolo" class="modal modal_register--tavolo">
-			<div class="modal__form panel-background p-3">
-				<h3 class="mb-2">registrazione tavolo</h3>
-				<!-- inizio FORM -->
-				<form class="mb-3" th:action="@{/admin/tavolo}" method="POST" th:object="${tavolo}">
-					<div th:if="${#fields.hasGlobalErrors()}">
-						<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
-					</div>
-					<table>
-						<tr>
-							<td>Numero Tavolo:</td> 
-							<td><input type="text" th:field="*{numeroTavolo}" /></td> 
-							<span th:if="${#fields.hasErrors('numeroTavolo')}" th:errors="*{numeroTavolo}"></span>
-						</tr>
-						<tr>
-							<td>Numero di Posti:</td> 
-							<td><input type="text" th:field="*{numeroPosti}" /></td> 
-							<span th:if="${#fields.hasErrors('numeroPosti')}" th:errors="*{numeroPosti}"></span>
-						</tr>
-						<tr>
-							<td>
-								<label for="sala-select">Sala:</label> 
-								 <select class="form-control mb-2" th:field="*{sala}" id="sala-select" required>
-									<th:block th:each="singolaSala : ${sale}">
-										<option	th:text="${singolaSala.nome}" th:value=${singolaSala.id} />
-									</th:block> 
-								</select>
-							</td>
-							 
-						</tr>
-						<tr>
-							<td><button type="submit">Registra</button></td>
-			        <td><a class="chiudi ml-2" href="#">chiudi</a></td>
-						</tr>
-					</table>
-				</form>
-			</div>
+	</div>
+	<!-- fine MODAL--register-admin -->
+
+
+	<!-- inizio MODAL--register-sala -->
+	<div th:fragment="modal--register-sala"
+		class="modal modal_register--sala">
+		<div class="modal__form panel-background p-3">
+			<h3 class="mb-2">registrazione sala</h3>
+			<!-- inizio FORM -->
+			<form class="mb-3" th:action="@{/admin/sala}" method="POST"
+				th:object="${sala}">
+				<div th:if="${#fields.hasGlobalErrors()}">
+					<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+				</div>
+				<table>
+					<tr>
+						<td>Nome:</td>
+						<td><input type="text" th:field="*{nome}" required /></td>
+						<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+					</tr>
+					<tr>
+						<td>Descrizione:</td>
+						<td><input class="mb-2" type="text" th:field="*{descrizione}"
+							required /></td>
+						<span th:if="${#fields.hasErrors('descrizione')}"
+							th:errors="*{descrizione}"></span>
+					</tr>
+					<tr>
+						<td><button type="submit">Registra</button></td>
+						<td><a class="chiudi ml-2" href="#">chiudi</a></td>
+					</tr>
+				</table>
+			</form>
 		</div>
-		<!-- fine MODAL--register-tavolo -->
-		
-		
-		<!-- inizio MODAL--register-birra -->
-		<div th:fragment="modal--register-birra" class="modal modal_register--birra">
-			<div class="modal__form panel-background p-3">
-				<h3 class="mb-2">registrazione birra</h3>
-				<!-- inizio FORM -->
-				<form th:action="@{/admin/birra}" method="POST" th:object="${birra}">
-					<div th:if="${#fields.hasGlobalErrors()}">
-			  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
-					</div>		
-					<table>
-						<tr>
-							<td>Nome:</td>
-							<td><input type="text" th:field="*{nome}" required/></td>
-							<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
-						</tr>		
-						<tr>
-							<td>Birrificio:</td>
-							<td><input type="text" th:field="*{birrificio}" required/></td>
-							<span th:if="${#fields.hasErrors('birrificio')}" th:errors="*{birrificio}"></span>
-						</tr>
-						<tr>
-							<td>Colore:</td>
-							<td><input type="text" th:field="*{colore}" required/></td>
-							<span th:if="${#fields.hasErrors('colore')}" th:errors="*{colore}"></span>
-						</tr>
-						<tr>
-							<td>Descrizione:</td>
-							<td><input type="text" th:field="*{descrizione}" required/></td>
-							<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
-						</tr>
-						<tr>
-							<td>Dimensione (cl):</td>
-							<td><input type="text" th:field="*{dimensione}" required/></td>
-							<span th:if="${#fields.hasErrors('dimensione')}" th:errors="*{dimensione}"></span>
-						</tr>
-						<tr>
-							<td>Prezzo (Euro):</td>
-							<td><input type="text" th:field="*{prezzo}" required/></td>
-							<span th:if="${#fields.hasErrors('prezzo')}" th:errors="*{prezzo}"></span>
-						</tr>
-						<tr>
-							<td>immagine:</td>
-							<td><input class="mb-2" type="file" name="image"  th:field="*{immagine}" accept="image/png, image/jpeg, image/jpg" required/></td>
-						</tr>
-						<tr>
-							<td><button type="submit">Registra</button></td>
-			        <td><a class="chiudi ml-2" href="#">chiudi</a></td>
-						</tr>
-					</table>
-				</form>
-			</div>
+	</div>
+	<!-- fine MODAL--register-sala -->
+
+
+	<!-- inizio MODAL--register-tavolo -->
+	<div th:fragment="modal--register-tavolo"
+		class="modal modal_register--tavolo">
+		<div class="modal__form panel-background p-3">
+			<h3 class="mb-2">registrazione tavolo</h3>
+			<!-- inizio FORM -->
+			<form class="mb-3" th:action="@{/admin/tavolo}" method="POST"
+				th:object="${tavolo}">
+				<div th:if="${#fields.hasGlobalErrors()}">
+					<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+				</div>
+				<table>
+					<tr>
+						<td>Numero Tavolo:</td>
+						<td><input type="text" th:field="*{numeroTavolo}" /></td>
+						<span th:if="${#fields.hasErrors('numeroTavolo')}"
+							th:errors="*{numeroTavolo}"></span>
+					</tr>
+					<tr>
+						<td>Numero di Posti:</td>
+						<td><input type="text" th:field="*{numeroPosti}" /></td>
+						<span th:if="${#fields.hasErrors('numeroPosti')}"
+							th:errors="*{numeroPosti}"></span>
+					</tr>
+					<tr>
+						<td><label for="sala-select">Sala:</label> <select
+							class="form-control mb-2" th:field="*{sala}" id="sala-select"
+							required>
+								<th:block th:each="singolaSala : ${sale}">
+									<option th:text="${singolaSala.nome}"
+										th:value=${singolaSala.id} />
+								</th:block>
+						</select></td>
+
+					</tr>
+					<tr>
+						<td><button type="submit">Registra</button></td>
+						<td><a class="chiudi ml-2" href="#">chiudi</a></td>
+					</tr>
+				</table>
+			</form>
 		</div>
-		<!-- fine MODAL--register-birra -->
+	</div>
+	<!-- fine MODAL--register-tavolo -->
+
+
+	<!-- inizio MODAL--register-birra -->
+	<div th:fragment="modal--register-birra"
+		class="modal modal_register--birra">
+		<div class="modal__form panel-background p-3">
+			<h3 class="mb-2">registrazione birra</h3>
+			<!-- inizio FORM -->
+			<form th:action="@{/admin/birra}" method="POST" th:object="${birra}">
+				<div th:if="${#fields.hasGlobalErrors()}">
+					<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+				</div>
+				<table>
+					<tr>
+						<td>Nome:</td>
+						<td><input type="text" th:field="*{nome}" required /></td>
+						<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+					</tr>
+					<tr>
+						<td>Birrificio:</td>
+						<td><input type="text" th:field="*{birrificio}" required /></td>
+						<span th:if="${#fields.hasErrors('birrificio')}"
+							th:errors="*{birrificio}"></span>
+					</tr>
+					<tr>
+						<td>Colore:</td>
+						<td><input type="text" th:field="*{colore}" required /></td>
+						<span th:if="${#fields.hasErrors('colore')}" th:errors="*{colore}"></span>
+					</tr>
+					<tr>
+						<td>Descrizione:</td>
+						<td><input type="text" th:field="*{descrizione}" required /></td>
+						<span th:if="${#fields.hasErrors('descrizione')}"
+							th:errors="*{descrizione}"></span>
+					</tr>
+					<tr>
+						<td>Dimensione (cl):</td>
+						<td><input type="text" th:field="*{dimensione}" required /></td>
+						<span th:if="${#fields.hasErrors('dimensione')}"
+							th:errors="*{dimensione}"></span>
+					</tr>
+					<tr>
+						<td>Prezzo (Euro):</td>
+						<td><input type="text" th:field="*{prezzo}" required /></td>
+						<span th:if="${#fields.hasErrors('prezzo')}" th:errors="*{prezzo}"></span>
+					</tr>
+					<tr>
+						<td>immagine:</td>
+						<td><input class="mb-2" type="file" name="image"
+							th:field="*{immagine}" accept="image/png, image/jpeg, image/jpg"
+							required /></td>
+					</tr>
+					<tr>
+						<td><button type="submit">Registra</button></td>
+						<td><a class="chiudi ml-2" href="#">chiudi</a></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+	<!-- fine MODAL--register-birra -->
 
 
 	<!-- inizio SCRIPTS	 -->
 	<th:block th:fragment="scripts">
-		<script src="js/jquery-3.6.0.min.js" th:src="@{/js/jquery-3.6.0.min.js}"></script>
+		<script src="js/jquery-3.6.0.min.js"
+			th:src="@{/js/jquery-3.6.0.min.js}"></script>
 		<script src="js/scripts.js" th:src="@{/js/scripts.js}"></script>
 	</th:block>
 	<!-- fine SCRIPTS	 -->

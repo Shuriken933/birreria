@@ -42,6 +42,8 @@ public class BirraController {
 		return "birre";
 	}*/
 	
+	
+	
 	@GetMapping({"/birra/{id}"})
 	public String getBirra(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("birra", this.birraService.birraPerId(id));

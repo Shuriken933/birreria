@@ -14,32 +14,37 @@
 
 		<div class="header">
       <p class="mb-0">Benvenuto in</p>
-      <h1 class="m-0">Nome della birreria</h1>
+      <h1 class="m-0">Birreria</h1>
     </div>
 
 		<div class="main">
       <div class="flex">
 
         <!-- item BIRRA -->
-        <div class="panel-birra mb-3 p-2" style="position:relative;">
-          <img src="" alt="birra" width="100" height="100">
+        <div class="panel-birra mb-3 p-2" style="position:relative;" th:each="birra : ${birre}">
+          <img th:src="@{'/img/birre/' + ${birra.immagine}}" alt="birra" th:alt="${birra.nome}" width="100" height="100">
           <h3 class="m-0">
-            <a href="#">nome della birra</a>
+            <a th:href="@{'/birra/' + ${birra.id}}" th:text="${birra.nome}">nome della birra</a>
           </h3>
-          <p class="m-0 opacity-50">7€</p>
+          <p class="m-0 opacity-50" >
+          	<span th:text="${birra.prezzo}">7</span>
+          	<span>€</span>
+          </p>
         </div>
         
       </div>
     </div>
 
 
-
-		<div class="credits">
+<!-- 
+<div class="credits">
       <p style="font-size: 0.75rem; text-align:center;">
         <span class="opacity-50">designed by</span>
         <strong>Eros Agostini</strong>
       </p>
     </div>
+ -->
+		
 
 		<!-- inizio FOOTER -->
 		<footer th:replace="fragments/base.html :: footer"></footer>

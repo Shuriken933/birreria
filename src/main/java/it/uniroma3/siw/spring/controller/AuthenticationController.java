@@ -47,6 +47,7 @@ public class AuthenticationController {
 	
 	@RequestMapping(value = {"/", "index"}, method = RequestMethod.GET)
 	public String index(Model model) {
+		model.addAttribute("birre", this.birraService.tutte());
 		model.addAttribute("user", new User());
 		model.addAttribute("credentials", new Credentials());
 		return "index";

@@ -5,36 +5,49 @@
 
 <body class="birra">
 
-	<!-- Inizio MENU -->
-	<nav th:replace="fragments/base.html :: menu"></nav>
-	<!-- fine MENU -->
-	
-	<header class="top p-2">
-		<h1 class="text-center" th:text="${birra.nome}">nome</h1>
-		<p class="text-center">
-			<span>birrificio</span>
-			<strong th:text="${birra.birrificio}">birrificio</strong>
-		</p>
-	</header>
-	
-	<!-- <div class="col-50">
-		<a href=""><img src="birra1.png" alt=""></a>
-	</div> -->
-	<div class="col-50 text-center" style="margin-top:-80px;">
-		<img class="" th:src="@{'/img/' + ${birra.immagine}}">
-		<ul>
-			<li>colore: <strong th:text="${birra.colore}">colore</strong></li>
-			<li>dimensione: <strong>cl</strong> <strong th:text="${birra.dimensione}">birra1 </strong></li>
-			<li>prezzo <strong>€</strong>  <strong th:text="${birra.prezzo}">birra1 </strong></li>
-		</ul> 
+	<div class="grid-container">
 
-		<p class="mb-2" th:text="${birra.descrizione}">descrizione</p>
+		<!-- Inizio MENU -->
+		<nav th:replace="fragments/base.html :: menu"></nav>
+		<!-- fine MENU -->
+		
+		<header class="top p-2 header">
+			<h1 th:text="${birra.nome}">nome</h1>
+			<p>
+				<span>birrificio</span>
+				<strong th:text="${birra.birrificio}">birrificio</strong>
+			</p>
+		</header>
+		
+		<!-- <div class="col-50">
+			<a href=""><img src="birra1.png" alt=""></a>
+		</div> -->
+		<div class="main">
+			<div class="flex">
+				<div class="flex-item-50">
+					<img class="" th:src="@{'/img/birre/' + ${birra.immagine}}" width="300">
+				</div>
+				<div class="flex-item-50 pl-4" style="margin-top: auto; margin-bottom: auto;">
+					<ul>
+						<li>colore: <strong th:text="${birra.colore}">colore</strong></li>
+						<li>dimensione: <strong>cl</strong> <strong th:text="${birra.dimensione}">birra1 </strong></li>
+						<li>prezzo <strong>€</strong>  <strong th:text="${birra.prezzo}">birra1 </strong></li>
+					</ul> 
+			
+					<p class="mb-2" th:text="${birra.descrizione}">descrizione</p>
+				</div>
+			</div>
+			
+			
+		</div>
+		
+	
+		<!-- inizio FOOTER -->
+		<footer th:replace="fragments/base.html :: footer"></footer>
+		<!-- fine FOOTER -->
+		
+		
 	</div>
-	
-
-	<!-- inizio FOOTER -->
-	<footer th:replace="fragments/base.html :: footer"></footer>
-	<!-- fine FOOTER -->
 
 </body>
 </html>

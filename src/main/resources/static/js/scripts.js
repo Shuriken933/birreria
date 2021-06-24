@@ -19,6 +19,8 @@ $( document ).ready(function() {
 		$(".modal_register--sala").removeClass("modal--open");
 		$(".modal_register--tavolo").removeClass("modal--open");
 		$(".modal_register--birra").removeClass("modal--open");
+		
+		$(".modal_edit--cameriere").removeClass("modal--open");
   });
 
   $( ".modal--open" ).on('click', function() {
@@ -41,8 +43,12 @@ $( document ).ready(function() {
     $(".modal_register--tavolo").toggleClass("modal--open");
   });
 
-$( ".button-modal-register--birra" ).on('click', function() {
+	$( ".button-modal-register--birra" ).on('click', function() {
     $(".modal_register--birra").toggleClass("modal--open");
+  });
+
+$( ".button-modal-edit--cameriere" ).on('click', function() {
+    $(".modal_edit--cameriere").toggleClass("modal--open");
   });
 
 

@@ -68,7 +68,7 @@
 			<h3>sale</h3>
 			<table>
 				<tr th:each="sala : ${sale}">
-					<td th:text="'#' + ${sala.id}">0</td>
+					<td class="opacity-50" th:text="'id: ' + ${sala.id}">0</td>
 					<td th:text="${sala.nome}">nome</td>
 					<td th:text="${sala.descrizione}">descrizione</td>
 					<td><img class="button--edit opacity-40" width="30" height="30" alt="add tavolo" th:src="@{/img/icons/edit.png}"></td>
