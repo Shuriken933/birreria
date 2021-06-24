@@ -22,7 +22,10 @@
 			<ul class="m-0 p-0">
 				<li class="mx-1 text-center" th:each="cameriere : ${camerieri}">
 					<div class="cerchietto">
-						<img alt="cameriere" th:src="@{'/img/persone/' + ${cameriere.immagine}}">
+						<a th:href="@{'/admin/view/cameriere/' + ${cameriere.id}}">
+							<img class="cameriere" alt="cameriere" th:src="@{'/img/persone/' + ${cameriere.immagine}}">
+						</a>
+						
 					</div>
 					<p th:text="${cameriere.nome}">nome a caso</p>
 				</li>
@@ -44,8 +47,13 @@
 					<td class="opacity-50"><span>id: </span><span th:text="${tavolo.id}">0</span></td>
 					<td th:text="'#' + ${tavolo.numeroTavolo}">0</td>
 					<td th:text="${tavolo.numeroPosti}">0</td>
+					<td th:text="${tavolo.sala.nome}">0</td>
 					<td><img class="button--edit opacity-40" width="30" height="30" alt="add tavolo" th:src="@{/img/icons/edit.png}"></td>
-					<td><img class="button--delete opacity-40" width="30" height="30" alt="add tavolo" th:src="@{/img/icons/delete.png}"></td>
+					<td>
+						<a th:href="@{'/admin/delete/tavolo/' + ${tavolo.id}}">
+							<img class="button--delete" width="30" height="30" alt="delete tavolo" th:src="@{/img/icons/delete.png}">
+						</a>
+					</td>
 				</tr>
 			</table>
 			<a class="button-modal-register--tavolo" href="#">
@@ -64,7 +72,11 @@
 					<td th:text="${sala.nome}">nome</td>
 					<td th:text="${sala.descrizione}">descrizione</td>
 					<td><img class="button--edit opacity-40" width="30" height="30" alt="add tavolo" th:src="@{/img/icons/edit.png}"></td>
-					<td><img class="button--delete opacity-40" width="30" height="30" alt="add tavolo" th:src="@{/img/icons/delete.png}"></td>
+					<td>
+						<a th:href="@{'/admin/delete/sala/' + ${sala.id}}">
+							<img class="button--delete" width="30" height="30" alt="delete sala" th:src="@{/img/icons/delete.png}">
+						</a>
+					</td>
 				</tr>
 			</table>
 			<a class="button-modal-register--sala" href="#">
@@ -73,21 +85,44 @@
 		</div>
 		<!-- fine SALE -->
 		
+		
+		<!-- inizio BIRRE -->
+		<div class="birre panel-background py-2 px-3">
+			<h3>birre</h3>
+			<table>
+				<tr th:each="birra : ${birre}">
+					<td th:text="'#' + ${birra.id}">0</td>
+					<td><img class="" width="30" height="30" alt="birra" th:src="@{'/img/birre/' + ${birra.immagine}}"></td>
+					<td> <span th:text="${birra.nome}">nome</span> <span th:text="${birra.prezzo}">1</span><span>€</span></td>
+					<td th:text="${birra.descrizione}">descrizione</td>
+					<td th:text="${birra.colore}">colore</td>
+					<td th:text="${birra.dimensione}">dimensione</td>
+					<td><img class="button--edit opacity-40" width="30" height="30" alt="add tavolo" th:src="@{/img/icons/edit.png}"></td>
+					<td>
+						<a th:href="@{'/admin/delete/birra/' + ${birra.id}}">
+							<img class="button--delete" width="30" height="30" alt="delete birra" th:src="@{/img/icons/delete.png}">
+						</a> 
+					</td>
+				</tr>
+			</table>
+			<a class="button-modal-register--birra" href="#">
+				<img class="button--add" alt="add birra" th:src="@{/img/icons/add.png}">
+			</a>
+		</div>
+		<!-- fine BIRRE -->
+		
 
-
+		<!-- 
 		<div class="main">
 			<ul>
-				<li class="p-1"><a th:href="@{/admin/gestisciCamerieri}">gestisci
-						Camerieri</a></li>
-				<li class="p-1"><a th:href="@{/admin/gestisciTavoli}">gestisci
-						Tavoli</a></li>
-				<li class="p-1"><a th:href="@{/admin/gestisciBirre}">gestisci
-						Birre</a></li>
-				<li class="p-1"><a th:href="@{/admin/gestisciSale}">gestisci
-						Sale</a></li>
+				<li class="p-1"><a th:href="@{/admin/gestisciCamerieri}">gestisci	Camerieri</a></li>
+				<li class="p-1"><a th:href="@{/admin/gestisciTavoli}">gestisci Tavoli</a></li>
+				<li class="p-1"><a th:href="@{/admin/gestisciBirre}">gestisci	Birre</a></li>
+				<li class="p-1"><a th:href="@{/admin/gestisciSale}">gestisci Sale</a></li>
 			</ul>
-
 		</div>
+		 -->
+		
 
 
 		<!-- inizio FOOTER -->
@@ -104,6 +139,10 @@
 		
 		<!-- inizio MODAL--register-cameriere -->
 		<div th:replace="fragments/base.html :: modal--register-tavolo"></div>
+		<!-- fine MODAL--register-cameriere -->
+		
+		<!-- inizio MODAL--register-cameriere -->
+		<div th:replace="fragments/base.html :: modal--register-birra"></div>
 		<!-- fine MODAL--register-cameriere -->
 
 	</div>

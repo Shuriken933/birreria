@@ -52,10 +52,10 @@ public class SalaController {
 		return "redirect:/admin/gestisciSale";
 	}
 
-	@GetMapping("sala/delete/{id}")
+	@GetMapping("admin/delete/sala/{id}")
 	public String rimuoviSala(@PathVariable("id") Long id, Model model) {
 		this.salaService.rimuoviSala(id);
-		return "redirect:/admin/gestisciSale"; 
+		return "redirect:/admin/dashboard"; 
 	}
 
 }

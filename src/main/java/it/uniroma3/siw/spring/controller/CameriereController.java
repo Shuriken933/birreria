@@ -52,11 +52,11 @@ public class CameriereController {
 		return "camerieri";
 	}
 	
-	/*@GetMapping("/cameriere/{id}")
+	@GetMapping("/admin/view/cameriere/{id}")
 	public String getCameriere(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("cameriere", this.cameriereService.camerierePerId(id));
-		return "cameriere";
-	}*/
+		return "admin/cameriere";
+	}
 	
 	@PostMapping(value = {"/admin/cameriere"})
 	public String addCameriere(@ModelAttribute("cameriere") Cameriere cameriere, Model model, BindingResult bindingResult) {

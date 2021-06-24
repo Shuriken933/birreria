@@ -24,23 +24,23 @@ public class BirraController {
 	@Autowired
 	private BirraValidator birraValidator;
 	
-	@GetMapping(value = "/admin/gestisciBirre")
+	/*@GetMapping(value = "/admin/gestisciBirre")
 	public String getGestisciBirre(Model model) {
 		model.addAttribute("birre", this.birraService.tutte());
 		return "admin/gestisciBirre";
-	}
+	}*/
 	
-	@GetMapping(value = "/admin/birra")
+	/*@GetMapping(value = "/admin/birra")
 	public String addBirra(Model model) {
 		model.addAttribute("birra", new Birra());
 		return "birraForm";
-	}
+	}*/
 	
-	@GetMapping(value = "/birre")
+	/*@GetMapping(value = "/birre")
 	public String getBirre(Model model) {
 		model.addAttribute("birre", this.birraService.tutte());
 		return "birre";
-	}
+	}*/
 	
 	@GetMapping({"/birra/{id}"})
 	public String getBirra(@PathVariable("id") Long id, Model model) {
@@ -54,7 +54,7 @@ public class BirraController {
         if (!bindingResult.hasErrors()) {
         	this.birraService.inserisci(birra);
         	model.addAttribute("birre", this.birraService.tutte());
-            return "redirect:/admin/gestisciBirre";
+            return "redirect:/admin/dashboard";
         }
         return "admin/gestisciBirre";
     }
@@ -68,7 +68,7 @@ public class BirraController {
 	@GetMapping("/admin/delete/birra/{id}")
 	public String rimuoviBirra(@PathVariable("id") Long id, Model model) {
 		this.birraService.rimuoviBirra(id);
-		return "redirect:/admin/gestisciBirre"; 
+		return "redirect:/admin/dashboard"; 
 	}
 	
 

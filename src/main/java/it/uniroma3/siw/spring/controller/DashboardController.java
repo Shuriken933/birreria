@@ -8,10 +8,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import it.uniroma3.siw.spring.controller.validator.BirraValidator;
 import it.uniroma3.siw.spring.controller.validator.CameriereValidator;
+import it.uniroma3.siw.spring.model.Birra;
 import it.uniroma3.siw.spring.model.Cameriere;
 import it.uniroma3.siw.spring.model.Sala;
 import it.uniroma3.siw.spring.model.Tavolo;
+import it.uniroma3.siw.spring.service.BirraService;
 import it.uniroma3.siw.spring.service.CameriereService;
 import it.uniroma3.siw.spring.service.SalaService;
 import it.uniroma3.siw.spring.service.TavoloService;
@@ -23,6 +26,8 @@ public class DashboardController {
 	@Autowired CameriereService cameriereService;
 	@Autowired SalaService salaService;
 	@Autowired TavoloService tavoloService;
+	@Autowired private BirraService birraService;
+	@Autowired private BirraValidator birraValidator;
 	
 	
 	@GetMapping(value = "/admin/dashboard")
@@ -33,6 +38,8 @@ public class DashboardController {
 		model.addAttribute("sala", new Sala());
 		model.addAttribute("tavoli", this.tavoloService.tutti());
 		model.addAttribute("tavolo", new Tavolo());
+		model.addAttribute("birre", this.birraService.tutte());
+		model.addAttribute("birra", new Birra());
 		return "admin/dashboard";
 	}
 	

@@ -50,10 +50,10 @@ public class TavoloController {
         return "redirect:/admin/dashboard";
     }
 	
-	@GetMapping("tavolo/delete/{id}")
+	@GetMapping("admin/delete/tavolo/{id}")
 	public String rimuoviTavolo(@PathVariable("id") Long id, Model model) {
 		this.tavoloService.rimuoviTavolo(id);
-		return "redirect:/admin/gestisciTavoli"; 
+		return "redirect:/admin/dashboard"; 
 	}
 	
 	@GetMapping("tavolo/{id}")

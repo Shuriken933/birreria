@@ -16,13 +16,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import it.uniroma3.siw.spring.controller.validator.BirraValidator;
 import it.uniroma3.siw.spring.controller.validator.CredentialsValidator;
 import it.uniroma3.siw.spring.controller.validator.UserValidator;
+import it.uniroma3.siw.spring.model.Birra;
 import it.uniroma3.siw.spring.model.Cameriere;
 import it.uniroma3.siw.spring.model.Credentials;
 import it.uniroma3.siw.spring.model.Sala;
 import it.uniroma3.siw.spring.model.Tavolo;
 import it.uniroma3.siw.spring.model.User;
+import it.uniroma3.siw.spring.service.BirraService;
 import it.uniroma3.siw.spring.service.CameriereService;
 import it.uniroma3.siw.spring.service.CredentialsService;
 import it.uniroma3.siw.spring.service.SalaService;
@@ -37,6 +40,8 @@ public class AuthenticationController {
 	@Autowired private CredentialsValidator credentialsValidator;
 	@Autowired SalaService salaService;
 	@Autowired TavoloService tavoloService;
+	@Autowired private BirraService birraService;
+	@Autowired private BirraValidator birraValidator;
 	
 	
 	
@@ -79,6 +84,8 @@ public class AuthenticationController {
     		model.addAttribute("sala", new Sala());
     		model.addAttribute("tavoli", this.tavoloService.tutti());
     		model.addAttribute("tavolo", new Tavolo());
+    		model.addAttribute("birre", this.birraService.tutte());
+    		model.addAttribute("birra", new Birra());
             return "admin/dashboard";
         }else if(credentials.getRole().equals(Credentials.DEFAULT_ROLE)) {
         	return "redirect:/cameriere/gestisciOrdinazioni";

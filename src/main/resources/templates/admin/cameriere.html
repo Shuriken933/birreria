@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/base.html :: headerfiles(title='Dashboard')"></head>
+
+<body>
+
+	<div class="grid-container--admin">
+
+		<!-- Inizio MENU -->
+		<nav th:replace="fragments/base.html :: menu"></nav>
+		<!-- fine MENU -->
+
+		<div class="header">
+			<p class="mb-0">Ciao, Admin</p>
+			<p class="mb-0 opacity-40">benvenuto nella dashboard</p>
+		</div>
+		
+		<a th:href="@{/admin/dashboard}">torna indietro</a>
+		
+		
+		<!-- inizio PERSONALE -->
+		<div class="personale panel-background flex py-2 px-3" style="max-width: 700px;">
+		<!-- 
+		<ul class="m-0 p-0">
+				<li class="mx-1 text-center">
+					<div class="cerchietto">
+						<a><img class="cameriere" alt="cameriere" th:src="@{'/img/persone/' + ${cameriere.immagine}}"></a>
+					</div>
+					<p>
+						<span th:text="${cameriere.nome}">nome</span> 
+						<span th:text="${cameriere.cognome}">cognome</span>
+					</p>
+				</li>
+				<li th:text="${cameriere.eta}"></li>
+				<li th:text="${cameriere.assunzione}"></li>
+				<li th:text="${cameriere.durataContratto}"></li>
+				<li th:text="${cameriere.numeroDiTelefono}"></li>
+			</ul>
+		 -->
+			
+			<div class="flex-item-30">
+				<div class="" style="transform:scale(2);">
+					<a><img class="cameriere" alt="cameriere" th:src="@{'/img/persone/' + ${cameriere.immagine}}"></a>
+				</div>
+			</div>
+			
+			<div class="flex-item-70">
+				<table class="ml-4">
+					<tr>
+						<td class="opacity-50">nome</td>
+						<td th:text="${cameriere.nome}">nome</td>
+					</tr>
+					<tr>
+						<td class="opacity-50">cognome</td>
+						<td th:text="${cameriere.cognome}">cognome</td>
+					</tr>
+					<tr>
+						<td class="opacity-50">età</td>
+						<td th:text="${cameriere.eta}">età</td>
+					</tr>
+					<tr>
+						<td class="opacity-50">telefono</td>
+						<td th:text="${cameriere.numeroDiTelefono}">0</td>
+					</tr>
+					
+					<tr>
+						<td class="opacity-50">assunzione</td>
+						<td th:text="${cameriere.assunzione}">0</td>
+					</tr>
+					
+					<tr>
+						<td class="opacity-50">durata contratto (mesi)</td>
+						<td th:text="${cameriere.durataContratto}">0</td>
+					</tr>
+					
+				</table>
+				</div>
+			
+			
+			
+			
+			
+		</div>
+		<!-- fine PERSONALE -->
+		
+
+
+
+		<!-- inizio FOOTER -->
+		<footer th:replace="fragments/base.html :: footer"></footer>
+		<!-- fine FOOTER -->
+		
+
+	</div>
+
+	<!-- inizio SCRIPTS -->
+	<th:block th:replace="fragments/base.html :: scripts"></th:block>
+	<!-- fine SCRIPTS -->
+
+</body>
+</html>

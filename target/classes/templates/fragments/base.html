@@ -138,7 +138,7 @@
 			        </tr>
 			        <tr>
 			        	<td class="p-1">Immagine</td>
-			        	<td><input type="file" class="form-control" name="image" id="imageInput" placeholder="immagine" th:field="${cameriere.immagine}" accept="image/png, image/jpeg, image/jpg" required></td>
+			        	<td><input type="file" class="form-control mb-2" name="image" id="imageInput" placeholder="immagine" th:field="${cameriere.immagine}" accept="image/png, image/jpeg, image/jpg" required></td>
 				        <td th:if="${#fields.hasErrors('cameriere.immagine')}" th:errors="${cameriere.immagine}" th:style="'color:red'"></td>
 			        </tr>
 			        <tr>
@@ -192,7 +192,7 @@
 		<!-- inizio MODAL--register-sala -->
 		<div th:fragment="modal--register-sala" class="modal modal_register--sala">
 			<div class="modal__form panel-background p-3">
-				<h3 class="mb-2">registrazione di una sala</h3>
+				<h3 class="mb-2">registrazione sala</h3>
 				<!-- inizio FORM -->
 				<form class="mb-3" th:action="@{/admin/sala}" method="POST" th:object="${sala}">
 					<div th:if="${#fields.hasGlobalErrors()}">
@@ -206,11 +206,12 @@
 						</tr>
 						<tr>
 							<td>Descrizione:</td>
-							<td><input type="text" th:field="*{descrizione}" required/></td>
+							<td><input class="mb-2" type="text" th:field="*{descrizione}" required/></td>
 							<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
 						</tr>
 						<tr>
 							<td><button type="submit">Registra</button></td>
+			        <td><a class="chiudi ml-2" href="#">chiudi</a></td>
 						</tr>
 					</table>
 				</form>
@@ -222,7 +223,7 @@
 		<!-- inizio MODAL--register-tavolo -->
 		<div th:fragment="modal--register-tavolo" class="modal modal_register--tavolo">
 			<div class="modal__form panel-background p-3">
-				<h3 class="mb-2">registrazione di una sala</h3>
+				<h3 class="mb-2">registrazione tavolo</h3>
 				<!-- inizio FORM -->
 				<form class="mb-3" th:action="@{/admin/tavolo}" method="POST" th:object="${tavolo}">
 					<div th:if="${#fields.hasGlobalErrors()}">
@@ -242,7 +243,7 @@
 						<tr>
 							<td>
 								<label for="sala-select">Sala:</label> 
-								 <select class="form-control" th:field="*{sala}" id="sala-select" required>
+								 <select class="form-control mb-2" th:field="*{sala}" id="sala-select" required>
 									<th:block th:each="singolaSala : ${sale}">
 										<option	th:text="${singolaSala.nome}" th:value=${singolaSala.id} />
 									</th:block> 
@@ -252,12 +253,68 @@
 						</tr>
 						<tr>
 							<td><button type="submit">Registra</button></td>
+			        <td><a class="chiudi ml-2" href="#">chiudi</a></td>
 						</tr>
 					</table>
 				</form>
 			</div>
 		</div>
 		<!-- fine MODAL--register-tavolo -->
+		
+		
+		<!-- inizio MODAL--register-birra -->
+		<div th:fragment="modal--register-birra" class="modal modal_register--birra">
+			<div class="modal__form panel-background p-3">
+				<h3 class="mb-2">registrazione birra</h3>
+				<!-- inizio FORM -->
+				<form th:action="@{/admin/birra}" method="POST" th:object="${birra}">
+					<div th:if="${#fields.hasGlobalErrors()}">
+			  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+					</div>		
+					<table>
+						<tr>
+							<td>Nome:</td>
+							<td><input type="text" th:field="*{nome}" required/></td>
+							<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+						</tr>		
+						<tr>
+							<td>Birrificio:</td>
+							<td><input type="text" th:field="*{birrificio}" required/></td>
+							<span th:if="${#fields.hasErrors('birrificio')}" th:errors="*{birrificio}"></span>
+						</tr>
+						<tr>
+							<td>Colore:</td>
+							<td><input type="text" th:field="*{colore}" required/></td>
+							<span th:if="${#fields.hasErrors('colore')}" th:errors="*{colore}"></span>
+						</tr>
+						<tr>
+							<td>Descrizione:</td>
+							<td><input type="text" th:field="*{descrizione}" required/></td>
+							<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
+						</tr>
+						<tr>
+							<td>Dimensione (cl):</td>
+							<td><input type="text" th:field="*{dimensione}" required/></td>
+							<span th:if="${#fields.hasErrors('dimensione')}" th:errors="*{dimensione}"></span>
+						</tr>
+						<tr>
+							<td>Prezzo (Euro):</td>
+							<td><input type="text" th:field="*{prezzo}" required/></td>
+							<span th:if="${#fields.hasErrors('prezzo')}" th:errors="*{prezzo}"></span>
+						</tr>
+						<tr>
+							<td>immagine:</td>
+							<td><input class="mb-2" type="file" name="image"  th:field="*{immagine}" accept="image/png, image/jpeg, image/jpg" required/></td>
+						</tr>
+						<tr>
+							<td><button type="submit">Registra</button></td>
+			        <td><a class="chiudi ml-2" href="#">chiudi</a></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+		<!-- fine MODAL--register-birra -->
 
 
 	<!-- inizio SCRIPTS	 -->
