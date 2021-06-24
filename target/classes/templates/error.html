@@ -1,29 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/base.html"></head>
+<head th:replace="fragments/base.html :: headerfiles(title='error')"></head>
 <body>
-	<!-- inizio MENU -->
-	<nav th:replace="fragments/base.html :: menu"></nav>
-	<!-- fine MENU -->
-
-	<div class="container">
-		<h1>Error!</h1>
-		<div class="errorPage">
-			<br />
-			<p>
-				There seems to be a problem with the page you requested ( <span
-					th:text="${path}" /> ).
-			</p>
-			<p th:text="${'Details: ' + message}" />
-			<p th:text="${'Status: ' + status}" />
+	
+	<div class="grid-container">
+	
+		<!-- inizio MENU -->
+		<nav th:replace="fragments/base.html :: menu"></nav>
+		<!-- fine MENU -->
+		
+		<div class="header">
+      <h1 class="mb-0">Error!</h1>
+    </div>
+	
+		<div class="main">
+			<div class="errorPage">
+				<br />
+				<p>
+					There seems to be a problem with the page you requested ( <span	th:text="${path}" /> ).
+				</p>
+				<p th:text="${'Details: ' + message}" />
+				<p th:text="${'Status: ' + status}" />
+			</div>
 		</div>
-	</div>
-
-
-	<!-- Inizio MENU -->
-	<nav th:replace="fragments/base.html :: menu"></nav>
-	<!-- fine MENU -->
+	
+			<!-- inizio FOOTER -->
+			<footer th:replace="fragments/base.html :: footer"></footer>
+			<!-- fine FOOTER -->
+			
+		</div>
+		
+	<!-- inizio SCRIPTS -->
+	<th:block th:replace="fragments/base.html :: scripts"></th:block>
+	<!-- fine SCRIPTS -->
 
 </body>
 

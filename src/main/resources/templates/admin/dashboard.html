@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/base.html :: headerfiles(title='Dashboard')"></head>
+
+<body>
+
+	<div class="grid-container--admin">
+
+		<!-- Inizio MENU -->
+		<nav th:replace="fragments/base.html :: menu"></nav>
+		<!-- fine MENU -->
+
+		<div class="header">
+			<p class="mb-0">Ciao, Admin</p>
+			<p class="mb-0 opacity-40">benvenuto nella dashboard</p>
+		</div>
+		
+		
+		<!-- inizio PERSONALE -->
+		<div class="personale panel-background py-2 px-3">
+			<ul class="m-0 p-0">
+				<li class="mx-1 text-center" th:each="cameriere : ${camerieri}">
+					<div class="cerchietto">
+						<img alt="cameriere" th:src="@{'/img/persone/' + ${cameriere.immagine}}">
+					</div>
+					<p th:text="${cameriere.nome}">nome a caso</p>
+				</li>
+				<li class="mx-1">
+					<a class="button-modal-register--cameriere" href="#">
+						<img class="button--add" alt="add persona" th:src="@{/img/icons/add.png}">
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!-- fine PERSONALE -->
+		
+		
+		<!-- inizio TAVOLI -->
+		<div class="tavoli panel-background py-2 px-3">
+			<h3>tavoli</h3>
+			<table>
+				<tr th:each="tavolo : ${tavoli}">
+					<td class="opacity-50"><span>id: </span><span th:text="${tavolo.id}">0</span></td>
+					<td th:text="'#' + ${tavolo.numeroTavolo}">0</td>
+					<td th:text="${tavolo.numeroPosti}">0</td>
+					<td><img class="button--edit opacity-40" width="30" height="30" alt="add tavolo" th:src="@{/img/icons/edit.png}"></td>
+					<td><img class="button--delete opacity-40" width="30" height="30" alt="add tavolo" th:src="@{/img/icons/delete.png}"></td>
+				</tr>
+			</table>
+			<a class="button-modal-register--tavolo" href="#">
+				<img class="button--add" alt="add tavolo" th:src="@{/img/icons/add.png}">
+			</a>
+		</div>
+		<!-- fine TAVOLI -->
+		
+		
+		<!-- inizio SALE -->
+		<div class="sale panel-background py-2 px-3">
+			<h3>sale</h3>
+			<table>
+				<tr th:each="sala : ${sale}">
+					<td th:text="'#' + ${sala.id}">0</td>
+					<td th:text="${sala.nome}">nome</td>
+					<td th:text="${sala.descrizione}">descrizione</td>
+					<td><img class="button--edit opacity-40" width="30" height="30" alt="add tavolo" th:src="@{/img/icons/edit.png}"></td>
+					<td><img class="button--delete opacity-40" width="30" height="30" alt="add tavolo" th:src="@{/img/icons/delete.png}"></td>
+				</tr>
+			</table>
+			<a class="button-modal-register--sala" href="#">
+				<img class="button--add" alt="add tavolo" th:src="@{/img/icons/add.png}">
+			</a>
+		</div>
+		<!-- fine SALE -->
+		
+
+
+		<div class="main">
+			<ul>
+				<li class="p-1"><a th:href="@{/admin/gestisciCamerieri}">gestisci
+						Camerieri</a></li>
+				<li class="p-1"><a th:href="@{/admin/gestisciTavoli}">gestisci
+						Tavoli</a></li>
+				<li class="p-1"><a th:href="@{/admin/gestisciBirre}">gestisci
+						Birre</a></li>
+				<li class="p-1"><a th:href="@{/admin/gestisciSale}">gestisci
+						Sale</a></li>
+			</ul>
+
+		</div>
+
+
+		<!-- inizio FOOTER -->
+		<footer th:replace="fragments/base.html :: footer"></footer>
+		<!-- fine FOOTER -->
+		
+		<!-- inizio MODAL--register-cameriere -->
+		<div th:replace="fragments/base.html :: modal--register-cameriere"></div>
+		<!-- fine MODAL--register-cameriere -->
+		
+		<!-- inizio MODAL--register-cameriere -->
+		<div th:replace="fragments/base.html :: modal--register-sala"></div>
+		<!-- fine MODAL--register-cameriere -->
+		
+		<!-- inizio MODAL--register-cameriere -->
+		<div th:replace="fragments/base.html :: modal--register-tavolo"></div>
+		<!-- fine MODAL--register-cameriere -->
+
+	</div>
+
+	<!-- inizio SCRIPTS -->
+	<th:block th:replace="fragments/base.html :: scripts"></th:block>
+	<!-- fine SCRIPTS -->
+
+</body>
+</html>

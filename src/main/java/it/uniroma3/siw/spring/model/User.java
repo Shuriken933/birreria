@@ -1,5 +1,6 @@
 package it.uniroma3.siw.spring.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +18,8 @@ public @Data class User {
 	private Long id;
 	private String nome;
 	private String cognome;
+	
+	
 	
 	
 	/*public Long getId() {return id;}

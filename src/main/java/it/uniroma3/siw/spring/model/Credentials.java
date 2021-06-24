@@ -33,7 +33,8 @@ public @Data class Credentials {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
-
+	
+	
 	
 	/*public Long getId() {return id;}
 	public void setId(Long id) {this.id = id;}

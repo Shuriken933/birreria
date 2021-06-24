@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,11 +28,17 @@ public @Data class Cameriere {
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate assunzione;
-	private Integer durataContratto;
+	private Integer durataContratto; //mesi
 	private Long numeroDiTelefono;
+	
+	@Column(nullable = true, length = 64)
+    private String immagine;
 	
 	@OneToMany(mappedBy = "cameriere", cascade = {CascadeType.REMOVE})
 	private List<Ordinazione> ordinazioni;
+	
+	
+
 	
 	
 	/*public Long getId() {return id;}

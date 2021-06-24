@@ -22,12 +22,12 @@ public class SalaController {
 	@Autowired
 	private SalaValidator salaValidator;
 	
-	@GetMapping(value = {"/admin/gestisciSale"})
+	/*@GetMapping(value = {"/admin/gestisciSale"})
 	public String getGestisciSale(Model model) {
 		model.addAttribute("sale", this.salaService.tutte());
 		model.addAttribute("sala", new Sala());
 		return "admin/gestisciSale";
-	}
+	}*/
 	
 	@GetMapping("sala/{id}")
 	public String getSala(@PathVariable("id") Long id, Model model) {
@@ -41,9 +41,9 @@ public class SalaController {
 		if (!bindingResult.hasErrors()) {
 			this.salaService.inserisci(sala);
 			model.addAttribute("sale", this.salaService.tutte());
-			return "redirect:/admin/gestisciSale";
+			return "redirect:/admin/dashboard";
 		}
-		return "admin/gestisciSale";
+		return "admin/dashboard";
 	}
 	
 	@PostMapping(value = {"/admin/modifica/sala"})

@@ -27,13 +27,13 @@ public class TavoloController {
 	private SalaService salaService;
 	
 	
-	@GetMapping(value = "/admin/gestisciTavoli")
+	/*@GetMapping(value = "/admin/gestisciTavoli")
 	public String getGestisciTavoli(Model model) {
 		model.addAttribute("tavoli", this.tavoloService.tutti());
 		model.addAttribute("sale", this.salaService.tutte());
 		model.addAttribute("tavolo", new Tavolo());
 		return "admin/gestisciTavoli";
-	}
+	}*/
 	
 	@PostMapping("/admin/tavolo")
     public String addTavolo(@ModelAttribute("tavolo") Tavolo tavolo, Model model, BindingResult bindingResult) {
@@ -47,7 +47,7 @@ public class TavoloController {
 		
 		this.tavoloService.inserisci(tavolo);
     	model.addAttribute("tavoli", this.tavoloService.tutti());
-        return "redirect:/admin/gestisciTavoli";
+        return "redirect:/admin/dashboard";
     }
 	
 	@GetMapping("tavolo/delete/{id}")
